@@ -43,9 +43,9 @@
       "path": "/component",
       "items": [
         {
-          "desc": "机场选择",
-          "name": "show-more",
-          "path": "/showMore"
+          "desc": "索引选择器",
+          "name": "indexSelect",
+          "path": "/indexSelect"
         }
       ]
     }

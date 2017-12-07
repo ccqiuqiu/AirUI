@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import demoBlock from './components/demo-block.vue'
-import AirUI from '../lib/index'
+import AirUI from '../packages'
 import '../lib/css/index.css'
 
 Vue.component('demo-block', demoBlock)

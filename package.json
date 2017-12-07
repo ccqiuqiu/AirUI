@@ -7,6 +7,7 @@
   "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
+    "dev-css": "cd packages/theme-default && npm run dev",
     "start": "npm run dev",
     "build-doc": "node build/build.js",
     "build-lib": "node build/build-lib.js && cd packages/theme-default && gulp build",

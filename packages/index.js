@@ -1,7 +1,9 @@
-import WButton from './button/index.js';
+import AirButton from './button'
+import AirIndexSelect from './indexSelect'
 
 const components = [
-  WButton
+  AirButton,
+  AirIndexSelect
 ]
 
 const install = function (Vue) {
@@ -15,5 +17,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  WButton
+  AirButton,
+  AirIndexSelect
 }

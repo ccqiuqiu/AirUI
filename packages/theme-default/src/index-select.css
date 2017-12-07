@@ -1,0 +1,61 @@
+@b air-index-select {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @e search, history, hot{
+    flex: none;
+  }
+
+  @e content{
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  @e index{
+    padding: 4px 0;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background-color: #f3f7fa;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  @e char{
+    width: 26px;
+    font-size: 14px;
+    flex: 1 1 0;
+    text-align: center;
+  }
+  @e tip{
+    color: #ffffff;
+    background-color: #3f536e;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @e dl {
+    > dt {
+      background-color: #EEEEEE;
+      padding: 3px 5px;
+    }
+    > dd {
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+  }
+  @e sub-text{
+    font-size: 14px;
+    color: #AAA;
+  }
+}
