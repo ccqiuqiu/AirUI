@@ -39,16 +39,16 @@ Vue.use(AirUI)
 可以局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
-import { AirButton } from 'airui-vue'
+import { AirIndexSelect } from 'airui-vue'
 
 export default {
   components: {
-    AirButton
+    AirIndexSelect
   }
 }
 ```
 
-在模板中，用 `<air-button></air-button>` 自定义标签的方式使用组件
+在模板中，用 `<air-index-select></air-index-select>` 自定义标签的方式使用组件
 
 ```html
 <template>
@@ -60,4 +60,4 @@ export default {
 
 ## 自定义主题
 
-待更新
+开发中

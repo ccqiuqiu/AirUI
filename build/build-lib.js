@@ -11,7 +11,7 @@ const webpackConfig = require('./webpack.lib.conf')
 const spinner = ora('building for lib...')
 spinner.start()
 
-rm(path.join(path.resolve(__dirname, '../lib/index.js')), err => {
+rm(path.join(path.resolve(__dirname, '../lib/css')), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
@@ -31,8 +31,8 @@ rm(path.join(path.resolve(__dirname, '../lib/index.js')), err => {
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
-      '  Tip: built files are meant to be served over an HTTP server.\n' +
-      '  Opening index.html over file:// won\'t work.\n'
+      '  组件库build完成\n' +
+      '  现在可以publish到npm了\n'
     ))
   })
 })

@@ -1,8 +1,6 @@
-import AirButton from './button'
 import AirIndexSelect from './indexSelect'
 
 const components = [
-  AirButton,
   AirIndexSelect
 ]
 
@@ -17,6 +15,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  AirButton,
   AirIndexSelect
 }

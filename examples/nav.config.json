@@ -21,6 +21,11 @@
       "type": "pages"
     },
     {
+      "name": "res",
+      "path": "/res",
+      "desc": "资源"
+    },
+    {
       "name": "logs",
       "path": "/logs",
       "desc": "更新日志"
@@ -32,9 +37,9 @@
       "path": "/component",
       "items": [
         {
-          "desc": "Button 按钮",
-          "name": "button",
-          "path": "/button"
+          "desc": "待开发",
+          "name": "",
+          "path": "/"
         }
       ]
     },
