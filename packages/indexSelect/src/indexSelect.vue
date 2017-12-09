@@ -14,12 +14,12 @@
         <dl :class="['air-index-select__dl', 'air-index-select__key-hot']" v-show="!keyword">
           <dt>热门</dt>
           <dd>
-            <span v-for="item in hotData" @click="clickItem(item)">{{item[textField]}}</span>
+            <span v-for="item in hotData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
           </dd>
         </dl>
         <dl v-for="(value, key) in listData" :class="['air-index-select__dl', 'air-index-select__key-'+key]">
           <dt>{{key}}</dt>
-          <dd v-for="item in value" @click="clickItem(item)">
+          <dd v-for="item in value" :key="item[keyField]" @click="clickItem(item)">
             <span class="air-index-select__text">{{item[textField]}}</span>
             <span class="air-index-select__sub-text">{{item[subTextField]}}</span>
           </dd>
@@ -28,7 +28,7 @@
     </div>
     <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}]">
       <template v-for="char in index">
-        <span class="air-index-select__char" v-if="char === active" :style=[tipActiveStyle] @click="clickChar(char)">{{char}}</span>
+        <span class="air-index-select__char air-index-select__char--active" v-if="char === active" :style={color:activeColor} @click="clickChar(char)">{{char}}</span>
         <span class="air-index-select__char" v-else @click="clickChar(char)">{{char}}</span>
       </template>
     </div>
@@ -77,43 +77,41 @@
         index: [...'热ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
         tip: '', // 提示文字
         active: '热', // index上面激活的文字
-        searchDom: null,
+        topDom: null,
         contentDom: null,
         showTip: false,
         titleOffsetTops: [],
-        tipActiveStyle: {
-          color: this.activeColor,
-          fontWeight: 'bold',
-          fontSize: '16px'
-        },
         keyword: '',
         tabValue: this.tabs[0].value
       }
     },
     computed: {
+      tabFilterData () {
+        if (this.tabs && this.tabField) {
+          if (this.tabValue.indexOf('!') === 0) {
+            return this.data.filter(item => this.tabValue.substring(1) !== item[this.tabField])
+          } else {
+            return this.data.filter(item => this.tabValue === item[this.tabField])
+          }
+        }
+        return this.data
+      },
       hotData () {
         if (this.hots && this.hots.length > 0) {
-          return this.data.filter(item => this.hots.includes(item[this.keyField]))
+          return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
         }
         return []
       },
-      searchResult () {
-        let temp = {}
-        if (this.tabs && this.tabField) {
-          if (this.tabValue.indexOf('!') === 0) {
-            temp = this.data.filter(item => this.tabValue !== item[this.tabField])
-          } else {
-            temp = this.data.filter(item => this.tabValue === item[this.tabField])
-          }
-        }
+      searchData () {
         if (this.keyword) {
-          temp = temp.filter(item => this.searchFields.some(f => item[f].toUpperCase().indexOf(this.keyword.toUpperCase()) > -1))
+          return this.tabFilterData.filter(item => this.searchFields.some(f => item[f].toUpperCase().indexOf(this.keyword.toUpperCase()) > -1))
         }
-        return temp
+        return this.tabFilterData
       },
       listData () {
         const temp = {}
-        this.searchResult.sort((item1, item2) => { // 排序
+        this.searchData
+          .sort((item1, item2) => { // 排序
           const key1 = item1[this.groupField].charAt(0).toUpperCase()
           const key2 = item2[this.groupField].charAt(0).toUpperCase()
           if (key1 > key2) {
@@ -123,7 +121,8 @@
           } else {
             return 0
           }
-        }).forEach(item => { // 分组
+        })
+          .forEach(item => { // 分组
           const key = item[this.groupField].charAt(0).toUpperCase()
           if (!temp[key]) {
             temp[key] = []
@@ -137,7 +136,7 @@
       }
     },
     mounted () {
-      this.searchDom = this.$el.querySelector('.air-index-select__search')
+      this.topDom = this.$el.querySelector('.air-index-select__top')
       this.contentDom = this.$el.querySelector('.air-index-select__content')
       this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map(dt => ({char: dt.innerText, y: dt.offsetTop}))
       this.bindEvent()
@@ -171,7 +170,7 @@
         this.active = char
       },
       scroll () {
-        const dts = this.titleOffsetTops.filter(dt => dt.y - this.contentDom.scrollTop <= this.searchDom.clientHeight)
+        const dts = this.titleOffsetTops.filter(dt => dt.y - this.contentDom.scrollTop <= this.topDom.clientHeight)
         if (dts && dts.length > 0) {
           // this.tip = dts[dts.length - 1].char.charAt(0)
           this.active = dts[dts.length - 1].char.charAt(0)
@@ -186,8 +185,7 @@
       tip (char) {
         const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
         if (titleDom) {
-          titleDom.scrollIntoView()
-          // this.contentDom.scrollTop = titleDom.offsetTop - this.searchDom.clientHeight
+          this.contentDom.scrollTop = titleDom.offsetTop - this.topDom.clientHeight
         }
       }
     }

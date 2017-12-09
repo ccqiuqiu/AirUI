@@ -47,10 +47,11 @@
   }
   @e index{
     padding: 4px 0;
+    box-sizing: border-box;
     position: absolute;
     right: 0;
     top: 50px;
-    height: calc(100% - 50px - 8px);
+    height: calc(100% - 50px);
     background-color: #FAFAFA;
     display: flex;
     overflow: hidden;
@@ -58,7 +59,7 @@
 
     @m tabs{
       top: 97px;
-      height: calc(100% - 50px - 47px - 8px);
+      height: calc(100% - 50px - 47px);
     }
   }
   @e char{
@@ -66,6 +67,11 @@
     font-size: 12px;
     flex: 1 1 0;
     text-align: center;
+
+    @m active{
+      font-weight: bold;
+      font-size: 16px;
+    }
   }
   @e tip{
     color: #ffffff;
