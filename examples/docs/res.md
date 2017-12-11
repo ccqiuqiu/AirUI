@@ -6,11 +6,11 @@
 ### 使用方式
 
 ```js
-import 对象名 from 'airui-vue/res/文件名'
+import {资源名} from 'airui-vue/res'
 ```
 
 ### 资源列表
 
-|资源名|文件名|说明|
+|资源名|类型|说明|
 |----|----|-----|
-|全球机场数据|airPort|
+|airPort|Array|全球机场数据|

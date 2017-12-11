@@ -86,15 +86,28 @@
       }
     },
     computed: {
+      sortedData () {
+        return this.data.sort((item1, item2) => { // 排序
+          const key1 = item1[this.groupField].charAt(0).toUpperCase()
+          const key2 = item2[this.groupField].charAt(0).toUpperCase()
+          if (key1 > key2) {
+            return 1
+          } else if (key1 < key2) {
+            return -1
+          } else {
+            return 0
+          }
+        })
+      },
       tabFilterData () {
         if (this.tabs && this.tabField) {
           if (this.tabValue.indexOf('!') === 0) {
-            return this.data.filter(item => this.tabValue.substring(1) !== item[this.tabField])
+            return this.sortedData.filter(item => this.tabValue.substring(1) !== item[this.tabField])
           } else {
-            return this.data.filter(item => this.tabValue === item[this.tabField])
+            return this.sortedData.filter(item => this.tabValue === item[this.tabField])
           }
         }
-        return this.data
+        return this.sortedData
       },
       hotData () {
         if (this.hots && this.hots.length > 0) {
@@ -110,19 +123,7 @@
       },
       listData () {
         const temp = {}
-        this.searchData
-          .sort((item1, item2) => { // 排序
-          const key1 = item1[this.groupField].charAt(0).toUpperCase()
-          const key2 = item2[this.groupField].charAt(0).toUpperCase()
-          if (key1 > key2) {
-            return 1
-          } else if (key1 < key2) {
-            return -1
-          } else {
-            return 0
-          }
-        })
-          .forEach(item => { // 分组
+        this.searchData.forEach(item => { // 分组
           const key = item[this.groupField].charAt(0).toUpperCase()
           if (!temp[key]) {
             temp[key] = []

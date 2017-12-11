@@ -16,11 +16,11 @@
   :search-fields="searchFields"
   :tabs="tabs"
   tab-field="countrynameEN"
-  key-field="itatCode" 
+  key-field="itatCode"
   @on-selected="selected" />
 </div>
 <script>
-  import airPort from '../../lib/res/airPort'
+  import {airPort} from '../../lib/res'
   export default {
     data () {
       return {
@@ -34,7 +34,7 @@
       selected(item){
        console.log(item)
       }
-    }  
+    }
   }
 </script>
 
@@ -51,12 +51,12 @@
   :search-fields="searchFields"
   :tabs="tabs"
   tab-field="countrynameEN"
-  key-field="itatCode" 
+  key-field="itatCode"
   @on-selected="selected" />
 </template>
 
 <script>
-  import airPort from 'airui-vue/res/airPort'
+  import {airPort} from 'airui-vue/res'
   export default {
     data () {
       return {
@@ -70,7 +70,7 @@
       selected(item){
        console.log(item)
       }
-    }  
+    }
   }
 </script>
 ```
