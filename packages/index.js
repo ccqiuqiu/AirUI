@@ -1,7 +1,9 @@
 import AirIndexSelect from './indexSelect'
+import AirLineMap from './airLineMap'
 
 const components = [
-  AirIndexSelect
+  AirIndexSelect,
+  AirLineMap
 ]
 
 const install = function (Vue) {
@@ -15,5 +17,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export default {
   install,
-  AirIndexSelect
+  AirIndexSelect,
+  AirLineMap
 }

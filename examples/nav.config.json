@@ -51,6 +51,11 @@
           "desc": "索引选择器",
           "name": "indexSelect",
           "path": "/indexSelect"
+        },
+        {
+          "desc": "航线地图",
+          "name": "airLineMap",
+          "path": "/airLineMap"
         }
       ]
     }

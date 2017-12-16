@@ -5,8 +5,8 @@
         <input type="text" :placeholder="searchHit" v-model.trim="keyword" />
       </div>
       <div class="air-index-select__tab" v-if="tabs">
-        <span @click="tabValue=tab.value" v-for="(tab, index) in tabs"
-              :style="{borderColor: tab.value === tabValue ? activeColor : 'transparent', color: tab.value === tabValue ? '#333333' : '#AAAAAA'}">{{tab.text}}</span>
+        <span @click="tabIndex=index" v-for="(tab, index) in tabs"
+              :style="{borderColor: index === tabIndex ? activeColor : 'transparent', color: index === tabIndex ? '#333333' : '#AAAAAA'}">{{tab}}</span>
       </div>
     </div>
     <div class="air-index-select__content" @scroll="scroll">
@@ -17,7 +17,7 @@
             <span v-for="item in hotData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
           </dd>
         </dl>
-        <dl v-for="(value, key) in listData" :class="['air-index-select__dl', 'air-index-select__key-'+key]">
+        <dl v-for="(value, key) in listData" :key="key" :class="['air-index-select__dl', 'air-index-select__key-'+key]">
           <dt>{{key}}</dt>
           <dd v-for="item in value" :key="item[keyField]" @click="clickItem(item)">
             <span class="air-index-select__text">{{item[textField]}}</span>
@@ -66,11 +66,7 @@
         type: Array,
         default: []
       },
-      tabs: {
-        type: Array,
-        default: ['']
-      },
-      tabField: String
+      tabs: Array
     },
     data () {
       return {
@@ -82,32 +78,20 @@
         showTip: false,
         titleOffsetTops: [],
         keyword: '',
-        tabValue: this.tabs[0].value
+        tabIndex: 0
       }
     },
+    created () {
+      // 排序
+      this.sortedData()
+    },
     computed: {
-      sortedData () {
-        return this.data.sort((item1, item2) => { // 排序
-          const key1 = item1[this.groupField].charAt(0).toUpperCase()
-          const key2 = item2[this.groupField].charAt(0).toUpperCase()
-          if (key1 > key2) {
-            return 1
-          } else if (key1 < key2) {
-            return -1
-          } else {
-            return 0
-          }
-        })
-      },
       tabFilterData () {
-        if (this.tabs && this.tabField) {
-          if (this.tabValue.indexOf('!') === 0) {
-            return this.sortedData.filter(item => this.tabValue.substring(1) !== item[this.tabField])
-          } else {
-            return this.sortedData.filter(item => this.tabValue === item[this.tabField])
-          }
+        if (this.tabs) {
+          return this.data[this.tabIndex]
+        } else {
+          return this.data
         }
-        return this.sortedData
       },
       hotData () {
         if (this.hots && this.hots.length > 0) {
@@ -143,6 +127,26 @@
       this.bindEvent()
     },
     methods: {
+      sortedData () {
+        if (this.tabs) {
+          this.data.forEach(a => this.sortedArray(a))
+        } else {
+          this.sortedArray(this.data)
+        }
+      },
+      sortedArray (arr) {
+        arr.sort((item1, item2) => { // 排序
+          const key1 = item1[this.groupField].charAt(0).toUpperCase()
+          const key2 = item2[this.groupField].charAt(0).toUpperCase()
+          if (key1 > key2) {
+            return 1
+          } else if (key1 < key2) {
+            return -1
+          } else {
+            return 0
+          }
+        })
+      },
       // 绑定索引条触摸事件
       bindEvent () {
         const indexBar = this.$el.querySelector('.air-index-select__index')

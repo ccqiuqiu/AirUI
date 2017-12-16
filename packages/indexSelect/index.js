@@ -1,4 +1,4 @@
-import IndexSelect from './src/indexSelect.vue'
+import IndexSelect from './src/IndexSelect.vue'
 
 IndexSelect.install = function (Vue) {
   Vue.component(IndexSelect.name, IndexSelect)
