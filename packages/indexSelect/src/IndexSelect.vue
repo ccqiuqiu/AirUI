@@ -64,7 +64,7 @@
       },
       searchFields: {
         type: Array,
-        default: []
+        default: () => ([])
       },
       tabs: Array
     },

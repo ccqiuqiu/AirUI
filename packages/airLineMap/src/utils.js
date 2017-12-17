@@ -20,6 +20,7 @@ export function getRenderConf (geoJSON, canvasW, canvasH) {
     [canvasW, canvasH]
   )
   return {
+    json: geoJSON,
     height: canvasH,
     offsetX,
     offsetY,
@@ -155,16 +156,50 @@ function moveToOrigin (minX, minY, arr) {
   })
 }
 
-// 计算2点的角度
-export function angle(start, end){
+/**
+ * 计算2点的角度
+ * @param start 开始点坐标
+ * @param end 结束点坐标
+ * @param offset 修正角度，例如本例中，飞机的图标相对水平方向已经有90度，所以要传90来修正最终角度
+ * @returns {number}
+ */
+export function angle(start, end, offset = 0){
   const diff_x = end[0] - start[0]
   const diff_y = end[1] - start[1]
-  // 返回角度,不是弧度
-  return 360 * Math.atan(diff_y / diff_x) / (2 * Math.PI)
+  let a = 360 * Math.atan(diff_y / diff_x) / (2 * Math.PI)
+  a = offset - a
+  if (a > 0 && diff_x > 0) {
+    a += 180
+  }
+  if (a < 0 && diff_x < 0) {
+    a += -180
+  }
+  return a
 }
 // 计算2点的弧度
 export function radian(start, end){
   const diff_x = end[0] - start[0]
   const diff_y = end[1] - start[1]
   return Math.atan(diff_y / diff_x)
+}
+
+export function drawChinaMap(zrender, zr, style) {
+  // 分省份返回中国地图在canvas的坐标
+  renderConf.json.features.forEach(area => {
+    if (area.geometry.type === 'Polygon') {
+      area.geometry.coordinates.forEach(arr => {
+        drawArae(converts(arr), zrender, zr, style)
+      })
+    } else {
+      area.geometry.coordinates.forEach(s =>
+        s.forEach(arr => {
+          drawArae(converts(arr), zrender, zr, style)
+        })
+      )
+    }
+  })
+}
+
+function drawArae(ps, zrender, zr, style) {
+  zr.add(new zrender.Polygon({style, shape: {points: ps}}))
 }
