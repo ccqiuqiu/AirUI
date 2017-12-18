@@ -1,0 +1,1712 @@
+[
+  {
+    "city": "阿克苏",
+    "airport": "AKU",
+    "isCapital":false,
+    "location": [
+      "80.27555",
+      "41.18356"
+    ]
+  },
+  {
+    "city": "阿勒泰",
+    "isCapital":false,
+    "airport": "AAT",
+    "location": [
+      "88.12673",
+      "47.83278"
+    ]
+  },
+  {
+    "city": "安康",
+    "isCapital":false,
+    "airport": "AKA",
+    "location": [
+      "109.01464",
+      "32.70248"
+    ]
+  },
+  {
+    "city": "鞍山",
+    "isCapital":false,
+    "airport": "AOG",
+    "location": [
+      "123.00039",
+      "41.12520"
+    ]
+  },
+  {
+    "city": "安庆",
+    "isCapital":false,
+    "airport": "AQG",
+    "location": [
+      "117.05862",
+      "30.54287"
+    ]
+  },
+  {
+    "city": "澳门",
+    "isCapital":true,
+    "airport": "MFM",
+    "location": [
+      "113.54710",
+      "22.20447"
+    ]
+  },
+  {
+    "city": "北京",
+    "isCapital":true,
+    "airport": "PEK",
+    "location": [
+      "116.42275",
+      "39.91876"
+    ]
+  },
+  {
+    "city": "保山",
+    "isCapital":false,
+    "airport": "BSD",
+    "location": [
+      "99.17182",
+      "25.14693"
+    ]
+  },
+  {
+    "city": "包头",
+    "isCapital":false,
+    "airport": "BAV",
+    "location": [
+      "109.84158",
+      "40.66867"
+    ]
+  },
+  {
+    "city": "北海",
+    "isCapital":false,
+    "airport": "BHY",
+    "location": [
+      "109.12603",
+      "21.49099"
+    ]
+  },
+  {
+    "city": "长白山",
+    "isCapital":false,
+    "airport": "NBS",
+    "location": [
+      "127.61586",
+      "42.07438"
+    ]
+  },
+  {
+    "city": "昌都",
+    "isCapital":false,
+    "airport": "BPX",
+    "location": [
+      "97.17120",
+      "31.15219"
+    ]
+  },
+  {
+    "city": "长春",
+    "isCapital":true,
+    "airport": "CGQ",
+    "location": [
+      "125.31867",
+      "43.82948"
+    ]
+  },
+  {
+    "city": "常德",
+    "isCapital":false,
+    "airport": "CGD",
+    "location": [
+      "111.69522",
+      "29.04757"
+    ]
+  },
+  {
+    "city": "长沙",
+    "isCapital":true,
+    "airport": "CSX",
+    "location": [
+      "112.92866",
+      "28.26986"
+    ]
+  },
+  {
+    "city": "长治",
+    "isCapital":false,
+    "airport": "CIH",
+    "location": [
+      "112.92866",
+      "28.26986"
+    ]
+  },
+  {
+    "city": "常州",
+    "isCapital":false,
+    "airport": "CZX",
+    "location": [
+      "119.98589",
+      "31.84452"
+    ]
+  },
+  {
+    "city": "朝阳",
+    "isCapital":false,
+    "airport": "CHG",
+    "location": [
+      "120.45270",
+      "41.59783"
+    ]
+  },
+  {
+    "city": "成都",
+    "isCapital":true,
+    "airport": "CTU",
+    "location": [
+      "104.03614",
+      "30.60487"
+    ]
+  },
+  {
+    "city": "赤峰",
+    "isCapital":false,
+    "airport": "CIF",
+    "location": [
+      "118.84257",
+      "42.33565"
+    ]
+  },
+  {
+    "city": "重庆",
+    "isCapital":true,
+    "airport": "CKG",
+    "location": [
+      "106.49909",
+      "29.63204"
+    ]
+  },
+  {
+    "city": "大理",
+    "isCapital":false,
+    "airport": "DLU",
+    "location": [
+      "100.23742",
+      "25.61088"
+    ]
+  },
+  {
+    "city": "大连",
+    "isCapital":false,
+    "airport": "DLC",
+    "location": [
+      "121.61334",
+      "38.91822"
+    ]
+  },
+  {
+    "city": "大同",
+    "isCapital":false,
+    "airport": "DAT",
+    "location": [
+      "113.36278",
+      "40.11057"
+    ]
+  },
+  {
+    "city": "丹东",
+    "isCapital":false,
+    "airport": "DDG",
+    "location": [
+      "124.32059",
+      "40.02182"
+    ]
+  },
+  {
+    "city": "达县",
+    "isCapital":false,
+    "airport": "DAX",
+    "location": [
+      "107.47835",
+      "31.22084"
+    ]
+  },
+  {
+    "city": "德宏芒市",
+    "isCapital":false,
+    "airport": "LUM",
+    "location": [
+      "98.53847",
+      "24.4056"
+    ]
+  },
+  {
+    "city": "迪庆",
+    "isCapital":false,
+    "airport": "DIG",
+    "location": [
+      "99.68705",
+      "27.79586"
+    ]
+  },
+  {
+    "city": "东营",
+    "isCapital":false,
+    "airport": "DOY",
+    "location": [
+      "118.66034",
+      "37.46497"
+    ]
+  },
+  {
+    "city": "敦煌",
+    "isCapital":false,
+    "airport": "DNH",
+    "location": [
+      "94.67989",
+      "40.15166"
+    ]
+  },
+  {
+    "city": "恩施",
+    "isCapital":false,
+    "airport": "ENH",
+    "location": [
+      "109.48630",
+      "30.30513"
+    ]
+  },
+  {
+    "city": "东胜",
+    "isCapital":false,
+    "airport": "DSN",
+    "location": [
+      "109.87311",
+      "39.50183"
+    ]
+  },
+  {
+    "city": "福州",
+    "isCapital":true,
+    "airport": "FOC",
+    "location": [
+      "119.30121",
+      "26.09161"
+    ]
+  },
+  {
+    "city": "阜阳",
+    "isCapital":false,
+    "airport": "FUG",
+    "location": [
+      "115.8110",
+      "32.90000"
+    ]
+  },
+  {
+    "city": "广州",
+    "isCapital":true,
+    "airport": "CAN",
+    "location": [
+      "113.26561",
+      "23.13982"
+    ]
+  },
+  {
+    "city": "广元",
+    "isCapital":false,
+    "airport": "GYS",
+    "location": [
+      "105.84769",
+      "32.4522"
+    ]
+  },
+  {
+    "city": "广汉",
+    "isCapital":false,
+    "airport": "GHN",
+    "location": [
+      "104.33118",
+      "30.95142"
+    ]
+  },
+  {
+    "city": "赣州",
+    "isCapital":false,
+    "airport": "KOW",
+    "location": [
+      "114.93953",
+      "25.84108"
+    ]
+  },
+  {
+    "city": "格尔木",
+    "isCapital":false,
+    "airport": "GOQ",
+    "location": [
+      "94.93159",
+      "36.41486"
+    ]
+  },
+  {
+    "city": "桂林",
+    "isCapital":false,
+    "airport": "KWL",
+    "location": [
+      "110.17858",
+      "25.24355"
+    ]
+  },
+  {
+    "city": "贵阳",
+    "isCapital":true,
+    "airport": "KWE",
+    "location": [
+      "106.62646",
+      "26.67831"
+    ]
+  },
+  {
+    "city": "哈尔滨",
+    "isCapital":true,
+    "airport": "HRB",
+    "location": [
+      "126.52861",
+      "45.80396"
+    ]
+  },
+  {
+    "city": "哈密",
+    "isCapital":false,
+    "airport": "HMI",
+    "location": [
+      "93.53151",
+      "42.84243"
+    ]
+  },
+  {
+    "city": "海口",
+    "isCapital":true,
+    "airport": "HAK",
+    "location": [
+      "110.2012",
+      "20.06010"
+    ]
+  },
+  {
+    "city": "邯郸",
+    "isCapital":false,
+    "airport": "HDG",
+    "location": [
+      "114.54120",
+      "36.67175"
+    ]
+  },
+  {
+    "city": "汉中",
+    "isCapital":false,
+    "airport": "HZG",
+    "location": [
+      "107.02789",
+      "33.07454"
+    ]
+  },
+  {
+    "city": "杭州",
+    "isCapital":true,
+    "airport": "HGH",
+    "location": [
+      "120.13812",
+      "30.34017"
+    ]
+  },
+  {
+    "city": "合肥",
+    "isCapital":true,
+    "airport": "HFE",
+    "location": [
+      "117.22107",
+      "31.83987"
+    ]
+  },
+  {
+    "city": "和田",
+    "isCapital":false,
+    "airport": "HTN",
+    "location": [
+      "79.94727",
+      "37.11526"
+    ]
+  },
+  {
+    "city": "黑河",
+    "isCapital":false,
+    "airport": "HEK",
+    "location": [
+      "127.32357",
+      "50.18212"
+    ]
+  },
+  {
+    "city": "衡阳",
+    "isCapital":false,
+    "airport": "HNY",
+    "location": [
+      "112.56919",
+      "26.90596"
+    ]
+  },
+  {
+    "city": "呼和浩特",
+    "isCapital":true,
+    "airport": "HET",
+    "location": [
+      "111.75219",
+      "40.85379"
+    ]
+  },
+  {
+    "city": "怀化",
+    "isCapital":false,
+    "airport": "HJJ",
+    "location": [
+      "110.00524",
+      "27.58251"
+    ]
+  },
+  {
+    "city": "黄果树",
+    "isCapital":false,
+    "airport": "AVA",
+    "location": [
+      "105.88372",
+      "26.26280"
+    ]
+  },
+  {
+    "city": "黄山",
+    "isCapital":false,
+    "airport": "TXN",
+    "location": [
+      "118.26735",
+      "29.73612"
+    ]
+  },
+  {
+    "city": "黄岩",
+    "isCapital":false,
+    "airport": "HYN",
+    "location": [
+      "121.43758",
+      "28.56514"
+    ]
+  },
+  {
+    "city": "惠阳",
+    "isCapital":false,
+    "airport": "AHE",
+    "location": [
+      "114.68714",
+      "22.58202"
+    ]
+  },
+  {
+    "city": "吉林",
+    "isCapital":false,
+    "airport": "JIL",
+    "location": [
+      "126.54342",
+      "43.86285"
+    ]
+  },
+  {
+    "city": "吉安",
+    "isCapital":false,
+    "airport": "KNC",
+    "location": [
+      "114.99959",
+      "27.13260"
+    ]
+  },
+  {
+    "city": "济南",
+    "isCapital":true,
+    "airport": "TNA",
+    "location": [
+      "117.10767",
+      "36.68806"
+    ]
+  },
+  {
+    "city": "济宁",
+    "isCapital":false,
+    "airport": "JNG",
+    "location": [
+      "116.56798",
+      "35.44779"
+    ]
+  },
+  {
+    "city": "佳木斯",
+    "isCapital":false,
+    "airport": "JMU",
+    "location": [
+      "130.32121",
+      "46.80914"
+    ]
+  },
+  {
+    "city": "嘉峪关",
+    "isCapital":false,
+    "airport": "JGN",
+    "location": [
+      "98.29536",
+      "39.78824"
+    ]
+  },
+  {
+    "city": "九寨沟",
+    "isCapital":false,
+    "airport": "JZH",
+    "location": [
+      "103.69154",
+      "32.85731"
+    ]
+  },
+  {
+    "city": "锦州",
+    "isCapital":false,
+    "airport": "JNZ",
+    "location": [
+      "121.14455",
+      "41.12543"
+    ]
+  },
+  {
+    "city": "景德镇",
+    "isCapital":false,
+    "airport": "JDZ",
+    "location": [
+      "117.18209",
+      "29.28013"
+    ]
+  },
+  {
+    "city": "荆州",
+    "isCapital":false,
+    "airport": "SHS",
+    "location": [
+      "112.24434",
+      "30.35082"
+    ]
+  },
+  {
+    "city": "九江",
+    "isCapital":false,
+    "airport": "JIU",
+    "location": [
+      "116.00224",
+      "29.71810"
+    ]
+  },
+  {
+    "city": "喀什",
+    "isCapital":false,
+    "airport": "KHG",
+    "location": [
+      "76.00544",
+      "39.48109"
+    ]
+  },
+  {
+    "city": "克拉玛依",
+    "isCapital":false,
+    "airport": "KRY",
+    "location": [
+      "84.88897",
+      "45.59242"
+    ]
+  },
+  {
+    "city": "喀纳斯",
+    "isCapital":false,
+    "airport": "KJI",
+    "location": [
+      "87.00713",
+      "48.22942"
+    ]
+  },
+  {
+    "city": "库尔勒",
+    "isCapital":false,
+    "airport": "KRL",
+    "location": [
+      "86.18180",
+      "41.73541"
+    ]
+  },
+  {
+    "city": "库车",
+    "isCapital":false,
+    "airport": "KCA",
+    "location": [
+      "82.97098",
+      "41.72906"
+    ]
+  },
+  {
+    "city": "昆明",
+    "isCapital":true,
+    "airport": "KMG",
+    "location": [
+      "102.81782",
+      "24.91925"
+    ]
+  },
+  {
+    "city": "拉萨",
+    "isCapital":true,
+    "airport": "LXA",
+    "location": [
+      "91.11470",
+      "29.66188"
+    ]
+  },
+  {
+    "city": "兰州",
+    "isCapital":true,
+    "airport": "LHW",
+    "location": [
+      "103.83781",
+      "36.06847"
+    ]
+  },
+  {
+    "city": "丽江",
+    "isCapital":false,
+    "airport": "LJG",
+    "location": [
+      "100.23242",
+      "26.86432"
+    ]
+  },
+  {
+    "city": "荔波",
+    "isCapital":false,
+    "airport": "LLB",
+    "location": [
+      "107.89200",
+      "25.41988"
+    ]
+  },
+  {
+    "city": "连云港",
+    "isCapital":false,
+    "airport": "LYG",
+    "location": [
+      "119.2014",
+      "34.64535"
+    ]
+  },
+  {
+    "city": "梁平",
+    "isCapital":false,
+    "airport": "LIA",
+    "location": [
+      "107.80946",
+      "30.68474"
+    ]
+  },
+  {
+    "city": "临沂",
+    "isCapital":false,
+    "airport": "LYI",
+    "location": [
+      "118.36126",
+      "35.11312"
+    ]
+  },
+  {
+    "city": "临沧",
+    "isCapital":false,
+    "airport": "LNJ",
+    "location": [
+      "100.03216",
+      "23.74213"
+    ]
+  },
+  {
+    "city": "柳州",
+    "isCapital":false,
+    "airport": "LZH",
+    "location": [
+      "109.41163",
+      "24.36233"
+    ]
+  },
+  {
+    "city": "泸州",
+    "isCapital":false,
+    "airport": "LZO",
+    "location": [
+      "105.45254",
+      "28.89452"
+    ]
+  },
+  {
+    "city": "洛阳",
+    "isCapital":false,
+    "airport": "LYA",
+    "location": [
+      "112.46578",
+      "34.62508"
+    ]
+  },
+  {
+    "city": "满洲里",
+    "isCapital":false,
+    "airport": "NZH",
+    "location": [
+      "117.49000",
+      "49.59846"
+    ]
+  },
+  {
+    "city": "梅县",
+    "isCapital":false,
+    "airport": "MXZ",
+    "location": [
+      "116.10895",
+      "24.26561"
+    ]
+  },
+  {
+    "city": "漠河",
+    "isCapital":false,
+    "airport": "OHE",
+    "location": [
+      "122.54735",
+      "52.98159"
+    ]
+  },
+  {
+    "city": "绵阳",
+    "isCapital":false,
+    "airport": "MIG",
+    "location": [
+      "104.68788",
+      "31.48888"
+    ]
+  },
+  {
+    "city": "牡丹江",
+    "isCapital":false,
+    "airport": "MDG",
+    "location": [
+      "129.63495",
+      "44.57734"
+    ]
+  },
+  {
+    "city": "那拉提",
+    "isCapital":false,
+    "airport": "NLT",
+    "location": [
+      "83.38782",
+      "43.43922"
+    ]
+  },
+  {
+    "city": "南昌",
+    "isCapital":true,
+    "airport": "KHN",
+    "location": [
+      "115.83578",
+      "28.72746"
+    ]
+  },
+  {
+    "city": "南充",
+    "isCapital":false,
+    "airport": "NAO",
+    "location": [
+      "106.09653",
+      "30.87231"
+    ]
+  },
+  {
+    "city": "南京",
+    "isCapital":true,
+    "airport": "NKG",
+    "location": [
+      "118.77989",
+      "32.09728"
+    ]
+  },
+  {
+    "city": "南宁",
+    "isCapital":true,
+    "airport": "NNG",
+    "location": [
+      "108.32333",
+      "22.90269"
+    ]
+  },
+  {
+    "city": "南通",
+    "isCapital":false,
+    "airport": "NTG",
+    "location": [
+      "120.88937",
+      "32.02614"
+    ]
+  },
+  {
+    "city": "南阳",
+    "isCapital":false,
+    "airport": "NNY",
+    "location": [
+      "112.51143",
+      "33.03569"
+    ]
+  },
+  {
+    "city": "宁波",
+    "isCapital":false,
+    "airport": "NGB",
+    "location": [
+      "121.53598",
+      "29.91549"
+    ]
+  },
+  {
+    "city": "攀枝花",
+    "isCapital":false,
+    "airport": "PZI",
+    "location": [
+      "101.71951",
+      "26.59095"
+    ]
+  },
+  {
+    "city": "齐齐哈尔",
+    "isCapital":false,
+    "airport": "NDG",
+    "location": [
+      "123.89233",
+      "47.39582"
+    ]
+  },
+  {
+    "city": "且末",
+    "isCapital":false,
+    "airport": "IQM",
+    "location": [
+      "85.53970",
+      "38.15023"
+    ]
+  },
+  {
+    "city": "青岛",
+    "isCapital":false,
+    "airport": "TAO",
+    "location": [
+      "120.38542",
+      "36.07492"
+    ]
+  },
+  {
+    "city": "庆阳",
+    "isCapital":false,
+    "airport": "IQN",
+    "location": [
+      "107.64643",
+      "35.71961"
+    ]
+  },
+  {
+    "city": "秦皇岛",
+    "isCapital":false,
+    "airport": "BPE",
+    "location": [
+      "119.60790",
+      "39.94988"
+    ]
+  },
+  {
+    "city": "衢州",
+    "isCapital":false,
+    "airport": "JUZ",
+    "location": [
+      "118.86179",
+      "28.97579"
+    ]
+  },
+  {
+    "city": "泉州",
+    "isCapital":false,
+    "airport": "JJN",
+    "location": [
+      "118.67714",
+      "24.87788"
+    ]
+  },
+  {
+    "city": "上海",
+    "isCapital":true,
+    "airport": "SHA",
+    "location": [
+      "121.45609",
+      "31.27507"
+    ]
+  },
+  {
+    "city": "上海",
+    "isCapital":false,
+    "airport": "PVG",
+    "location": [
+      "121.45609",
+      "31.27507"
+    ]
+  },
+  {
+    "city": "三亚",
+    "isCapital":false,
+    "airport": "SYX",
+    "location": [
+      "109.51577",
+      "18.26343"
+    ]
+  },
+  {
+    "city": "韶关",
+    "isCapital":false,
+    "airport": "SHG",
+    "location": [
+      "113.61525",
+      "24.88725"
+    ]
+  },
+  {
+    "city": "汕头",
+    "isCapital":false,
+    "airport": "SWA",
+    "location": [
+      "117.51201",
+      "23.11568"
+    ]
+  },
+  {
+    "city": "沈阳",
+    "isCapital":true,
+    "airport": "SHE",
+    "location": [
+      "123.43437",
+      "41.86314"
+    ]
+  },
+  {
+    "city": "深圳",
+    "isCapital":false,
+    "airport": "SZX",
+    "location": [
+      "114.05288",
+      "22.58776"
+    ]
+  },
+  {
+    "city": "泗水",
+    "isCapital":false,
+    "airport": "SUB",
+    "location": [
+      "117.25629",
+      "35.67639"
+    ]
+  },
+  {
+    "city": "鄯善",
+    "isCapital":false,
+    "airport": "SXJ",
+    "location": [
+      "90.21588",
+      "42.87725"
+    ]
+  },
+  {
+    "city": "思茅",
+    "isCapital":false,
+    "airport": "SYM",
+    "location": [
+      "100.96682",
+      "22.79683"
+    ]
+  },
+  {
+    "city": "石家庄",
+    "isCapital":true,
+    "airport": "SJW",
+    "location": [
+      "114.49840",
+      "38.04618"
+    ]
+  },
+  {
+    "city": "塔城",
+    "isCapital":false,
+    "airport": "TCG",
+    "location": [
+      "82.98502",
+      "46.76017"
+    ]
+  },
+  {
+    "city": "太原",
+    "isCapital":true,
+    "airport": "TYN",
+    "location": [
+      "112.49956",
+      "37.90354"
+    ]
+  },
+  {
+    "city": "天津",
+    "isCapital":true,
+    "airport": "TSN",
+    "location": [
+      "117.21741",
+      "39.12069"
+    ]
+  },
+  {
+    "city": "铜仁",
+    "isCapital":false,
+    "airport": "TEN",
+    "location": [
+      "109.18695",
+      "27.76060"
+    ]
+  },
+  {
+    "city": "万州",
+    "isCapital":false,
+    "airport": "WXN",
+    "location": [
+      "108.41356",
+      "30.81387"
+    ]
+  },
+  {
+    "city": "潍坊",
+    "isCapital":false,
+    "airport": "WEF",
+    "location": [
+      "119.16641",
+      "36.71853"
+    ]
+  },
+  {
+    "city": "威海",
+    "isCapital":false,
+    "airport": "WEH",
+    "location": [
+      "122.08685",
+      "37.56533"
+    ]
+  },
+  {
+    "city": "文山",
+    "isCapital":false,
+    "airport": "WNH",
+    "location": [
+      "104.23023",
+      "23.38534"
+    ]
+  },
+  {
+    "city": "温州",
+    "isCapital":false,
+    "airport": "WNZ",
+    "location": [
+      "120.69609",
+      "28.00492"
+    ]
+  },
+  {
+    "city": "梧州",
+    "isCapital":false,
+    "airport": "WUZ",
+    "location": [
+      "111.26725",
+      "23.49480"
+    ]
+  },
+  {
+    "city": "武汉",
+    "isCapital":true,
+    "airport": "WUH",
+    "location": [
+      "114.28596",
+      "30.64641"
+    ]
+  },
+  {
+    "city": "乌鲁木齐",
+    "isCapital":true,
+    "airport": "URC",
+    "location": [
+      "87.57329",
+      "43.85839"
+    ]
+  },
+  {
+    "city": "无锡",
+    "isCapital":false,
+    "airport": "WUX",
+    "location": [
+      "120.31090",
+      "31.50089"
+    ]
+  },
+  {
+    "city": "武夷山",
+    "isCapital":false,
+    "airport": "WYS WUS",
+    "location": [
+      "118.01114",
+      "27.70365"
+    ]
+  },
+  {
+    "city": "西昌",
+    "isCapital":false,
+    "airport": "XIC",
+    "location": [
+      "102.27297",
+      "27.89779"
+    ]
+  },
+  {
+    "city": "西安",
+    "isCapital":true,
+    "airport": "XIY",
+    "location": [
+      "108.92503",
+      "34.37628"
+    ]
+  },
+  {
+    "city": "西宁",
+    "isCapital":true,
+    "airport": "XNN",
+    "location": [
+      "101.76989",
+      "36.62556"
+    ]
+  },
+  {
+    "city": "西双版纳",
+    "isCapital":false,
+    "airport": "JHG",
+    "location": [
+      "100.77078",
+      "21.97794"
+    ]
+  },
+  {
+    "city": "厦门",
+    "isCapital":false,
+    "airport": "XMN",
+    "location": [
+      "118.09016",
+      "24.49292"
+    ]
+  },
+  {
+    "city": "锡林浩特",
+    "isCapital":false,
+    "airport": "XIL",
+    "location": [
+      "116.09384",
+      "43.93851"
+    ]
+  },
+  {
+    "city": "兴义",
+    "isCapital":false,
+    "airport": "ACX",
+    "location": [
+      "104.90773",
+      "25.09892"
+    ]
+  },
+  {
+    "city": "徐州",
+    "isCapital":false,
+    "airport": "XUZ",
+    "location": [
+      "117.28142",
+      "34.22423"
+    ]
+  },
+  {
+    "city": "襄阳",
+    "isCapital":false,
+    "airport": "XFN",
+    "location": [
+      "112.13943",
+      "32.02679"
+    ]
+  },
+  {
+    "city": "香港",
+    "isCapital":true,
+    "airport": "HKG",
+    "location": [
+      "114.15014",
+      "22.38138"
+    ]
+  },
+  {
+    "city": "盐城",
+    "isCapital":false,
+    "airport": "YNZ",
+    "location": [
+      "120.15783",
+      "33.36470"
+    ]
+  },
+  {
+    "city": "延安",
+    "isCapital":false,
+    "airport": "ENY",
+    "location": [
+      "109.48716",
+      "36.60421"
+    ]
+  },
+  {
+    "city": "延吉",
+    "isCapital":false,
+    "airport": "YNJ",
+    "location": [
+      "129.46267",
+      "42.88967"
+    ]
+  },
+  {
+    "city": "烟台",
+    "isCapital":false,
+    "airport": "YNT",
+    "location": [
+      "121.43947",
+      "37.47467"
+    ]
+  },
+  {
+    "city": "宜宾",
+    "isCapital":false,
+    "airport": "YBP",
+    "location": [
+      "104.64005",
+      "28.79281"
+    ]
+  },
+  {
+    "city": "宜昌",
+    "isCapital":false,
+    "airport": "YIH",
+    "location": [
+      "111.28722",
+      "30.71722"
+    ]
+  },
+  {
+    "city": "伊宁",
+    "isCapital":false,
+    "airport": "YIN",
+    "location": [
+      "81.53967",
+      "43.98441"
+    ]
+  },
+  {
+    "city": "义乌",
+    "isCapital":false,
+    "airport": "YIW",
+    "location": [
+      "120.08241",
+      "29.31006"
+    ]
+  },
+  {
+    "city": "永州",
+    "isCapital":false,
+    "airport": "LLF",
+    "location": [
+      "111.60778",
+      "26.44239"
+    ]
+  },
+  {
+    "city": "榆林",
+    "isCapital":false,
+    "airport": "UYN",
+    "location": [
+      "109.73314",
+      "38.32735"
+    ]
+  },
+  {
+    "city": "运城",
+    "isCapital":false,
+    "airport": "YCU",
+    "location": [
+      "111.00648",
+      "35.05457"
+    ]
+  },
+  {
+    "city": "银川",
+    "isCapital":true,
+    "airport": "INC",
+    "location": [
+      "106.12514",
+      "38.62669"
+    ]
+  },
+  {
+    "city": "湛江",
+    "isCapital":false,
+    "airport": "ZHA",
+    "location": [
+      "110.36032",
+      "21.35878"
+    ]
+  },
+  {
+    "city": "昭通",
+    "isCapital":false,
+    "airport": "ZAT",
+    "location": [
+      "103.73710",
+      "27.37152"
+    ]
+  },
+  {
+    "city": "张家界",
+    "isCapital":false,
+    "airport": "DYG",
+    "location": [
+      "110.46480",
+      "29.14897"
+    ]
+  },
+  {
+    "city": "郑州",
+    "isCapital":true,
+    "airport": "CGO",
+    "location": [
+      "113.51176",
+      "34.85663"
+    ]
+  },
+  {
+    "city": "舟山",
+    "isCapital":false,
+    "airport": "HSN",
+    "location": [
+      "122.20744",
+      "29.99734"
+    ]
+  },
+  {
+    "city": "珠海",
+    "isCapital":false,
+    "airport": "ZUH",
+    "location": [
+      "113.57806",
+      "22.28308"
+    ]
+  },
+  {
+    "city": "遵义",
+    "isCapital":false,
+    "airport": "ZYI",
+    "location": [
+      "106.93135",
+      "27.73405"
+    ]
+  },
+  {
+    "city": "黎平",
+    "isCapital":false,
+    "airport": "HZH",
+    "location": [
+      "109.14202",
+      "26.24035"
+    ]
+  },
+  {
+    "city": "大庆",
+    "isCapital":false,
+    "airport": "DQA",
+    "location": [
+      "125.10570",
+      "46.59658"
+    ]
+  },
+  {
+    "city": "伊春",
+    "isCapital":false,
+    "airport": "LDS",
+    "location": [
+      "128.84934",
+      "47.77113"
+    ]
+  },
+  {
+    "city": "台北",
+    "isCapital":true,
+    "airport": "TPE",
+    "location": [
+      "121.53004",
+      "25.06810"
+    ]
+  },
+  {
+    "city": "腾冲",
+    "isCapital":false,
+    "airport": "TCZ",
+    "location": [
+      "98.48826",
+      "25.03937"
+    ]
+  },
+  {
+    "city": "博乐",
+    "isCapital":false,
+    "airport": "BPL",
+    "location": [
+      "82.05702",
+      "44.86253"
+    ]
+  },
+  {
+    "city": "海拉尔",
+    "isCapital":false,
+    "airport": "HLD",
+    "location": [
+      "119.83302",
+      "49.21928"
+    ]
+  },
+  {
+    "city": "台中",
+    "isCapital":false,
+    "airport": "RMQ",
+    "location": [
+      "120.66666",
+      "24.25"
+    ]
+  },
+  {
+    "city": "扬州",
+    "isCapital":false,
+    "airport": "YTY",
+    "location": [
+      "119.41680",
+      "32.43472"
+    ]
+  },
+  {
+    "city": "毕节",
+    "isCapital":false,
+    "airport": "BFJ",
+    "location": [
+      "105.28560",
+      "27.29587"
+    ]
+  },
+  {
+    "city": "池州",
+    "isCapital":false,
+    "airport": "JUH",
+    "location": [
+      "117.46736",
+      "30.68017"
+    ]
+  },
+  {
+    "city": "井冈山",
+    "isCapital":false,
+    "airport": "JGS",
+    "location": [
+      "114.28976",
+      "26.75610"
+    ]
+  },
+  {
+    "city": "鸡西",
+    "isCapital":false,
+    "airport": "JXA",
+    "location": [
+      "130.97213",
+      "45.30841"
+    ]
+  },
+  {
+    "city": "黔江",
+    "isCapital":false,
+    "airport": "JIQ",
+    "location": [
+      "108.77415",
+      "29.54477"
+    ]
+  },
+  {
+    "city": "通辽",
+    "isCapital":false,
+    "airport": "TGO",
+    "location": [
+      "122.24775",
+      "43.67526"
+    ]
+  },
+  {
+    "city": "乌兰浩特",
+    "isCapital":false,
+    "airport": "HLH",
+    "location": [
+      "122.01599",
+      "46.20403"
+    ]
+  },
+  {
+    "city": "吕梁",
+    "isCapital":false,
+    "airport": "LLV",
+    "location": [
+      "111.14406",
+      "37.52707"
+    ]
+  },
+  {
+    "city": "通化",
+    "isCapital":false,
+    "airport": "TNH",
+    "location": [
+      "125.94363",
+      "41.73412"
+    ]
+  },
+  {
+    "city": "吐鲁番",
+    "isCapital":false,
+    "airport": "TLQ",
+    "location": [
+      "89.20350",
+      "42.94484"
+    ]
+  },
+  {
+    "city": "抚远",
+    "isCapital":false,
+    "airport": "FYJ",
+    "location": [
+      "134.31673",
+      "48.37070"
+    ]
+  },
+  {
+    "city": "林芝",
+    "isCapital":false,
+    "airport": "LZY",
+    "location": [
+      "94.36489",
+      "29.64015"
+    ]
+  },
+  {
+    "city": "富蕴",
+    "isCapital":false,
+    "airport": "FYN",
+    "location": [
+      "89.53073",
+      "47.00164"
+    ]
+  },
+  {
+    "city": "凯里",
+    "isCapital":false,
+    "airport": "KJH",
+    "location": [
+      "107.99031",
+      "26.56985"
+    ]
+  },
+  {
+    "city": "日照",
+    "isCapital":false,
+    "airport": "RIZ",
+    "location": [
+      "119.33442",
+      "35.40594"
+    ]
+  },
+  {
+    "city": "石河子",
+    "isCapital":false,
+    "airport": "SHF",
+    "location": [
+      "86.09183",
+      "44.31097"
+    ]
+  },
+  {
+    "city": "武当山",
+    "isCapital":false,
+    "airport": "WDS",
+    "location": [
+      "110.91021",
+      "32.59591"
+    ]
+  },
+  {
+    "city": "临汾",
+    "isCapital":false,
+    "airport": "LFQ",
+    "location": [
+      "111.52212",
+      "36.14373"
+    ]
+  },
+  {
+    "city": "忻州",
+    "isCapital":false,
+    "airport": "WUT",
+    "location": [
+      "112.74080",
+      "38.43888"
+    ]
+  },
+  {
+    "city": "加格达奇",
+    "isCapital":false,
+    "airport": "JGD",
+    "location": [
+      "124.13109",
+      "50.38039"
+    ]
+  },
+  {
+    "city": "天水",
+    "isCapital":false,
+    "airport": "THQ",
+    "location": [
+      "105.72725",
+      "34.59690"
+    ]
+  }
+]

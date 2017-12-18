@@ -5,7 +5,7 @@
 ### 基础用法
 
 <div class="demo-block">
-  <air-line-map :airPorts="[]" />
+  <air-line-map :airPortCodes="['CAN','PEK','CSX']" />
 </div>
 
 ::: demo
