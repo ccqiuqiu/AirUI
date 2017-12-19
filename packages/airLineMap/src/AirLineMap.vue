@@ -12,45 +12,58 @@
   export default {
     name: 'AirLineMap',
     props: {
-      map: {
-        type: Object,
-        default: () => ({
-          fill: '#DDD',
-          stroke: '#BBB'
-        })
+      mapFill: {
+        type: String,
+        default: '#DDD'
       },
-      airPortCodes: {
+      mapStroke: {
+        type: String,
+        default: '#BBB'
+      },
+      codes: {
         type: Array,
         required: true
       },
-      icon: {
-        type: Object,
-        default: () => ({
-          size: 20,
-          z: 100,
-          fill: '#000000'
-        })
+      iconSize: {
+        type: Number,
+        default: 20
       },
-      line: {
-        type: Object,
-        default: () => ({
-          stroke: '#999',
-          z: 0
-        })
+      iconFill: {
+        type: String,
+        default: '#000000'
       },
-      dot: {
-        type: Object,
-        default: () => ({
-          fill: '#ff2d7d',
-          z: 10,
-          r: 8,
-          shadowBlur: 10
-        })
+      iconZ: {
+        type: Number,
+        default: 100
       },
+      lineStroke: {
+        type: String,
+        default: '#999'
+      },
+      lineZ: {
+        type: Number,
+        default: 0
+      },
+      dotR: {
+        type: Number,
+        default: 8
+      },
+      dotFill: {
+        type: String,
+        default: '#ff2d7d'
+      },
+      dotZ: {
+        type: Number,
+        default: 10
+      },
+      dotShadowBlur: {
+        type: Number,
+        default: 10
+      }
     },
     data() {
       return {
-        airPortLocations: this.airPortCodes.map(code => airPortLocation.find(l => l.airport === code)).filter(l => !!l),
+        airPortLocations: this.codes.map(code => airPortLocation.find(l => l.airport === code)).filter(l => !!l),
         zr: null, // 画布实例
         timeStop: 1000,
         time: 5000,
@@ -66,49 +79,47 @@
       // 初始化地图投影的工具类
       utils.init(china, width, height)
       // 画中国地图
-      utils.drawChinaMap(zrender, this.zr, {fill: this.map.fill, stroke: this.map.stroke})
-
-      // 将经纬度转为画布上的坐标
-      this.airPortLocations.forEach((a, index) => a.location = utils.convert(a.location.map(n => Number(n))))
+      utils.drawChinaMap(zrender, this.zr, {fill: this.mapFill, stroke: this.mapStroke})
       // 画航线
       this.airPortLocations.forEach((a, index, arr) => {
-        const p = a.location
+        // 将经纬度转为画布上的坐标
+        const p = utils.convert(a.location.map(n => Number(n)))
         // 画机场的点 // 中转机场画中转图标
         if (index === 0 || index === arr.length - 1) {
           this.zr.add(new zrender.Circle({
             shape: {
               cx: p[0],
               cy: p[1],
-              r: this.dot.r
+              r: this.dotR
             },
             style: {
-              fill: this.dot.fill,
+              fill: this.dotFill,
               text: a.city,
               fontSize: 12,
               textPosition: 'right',
-              shadowColor: this.dot.fill,
-              shadowBlur: this.dot.shadowBlur
+              shadowColor: this.dotFill,
+              shadowBlur: this.dotShadowBlur
             },
-            z: this.dot.z
+            z: this.dotZ
           }))
         } else {
           const zzIcon = zrender.path.createFromString(this.zzSvg, {
             style: {
-              fill: this.dot.fill,
+              fill: this.dotFill,
               text: a.city,
               fontSize: 12,
               textPosition: 'right'
             },
-            z: this.dot.z})
+            z: this.dotZ})
           // 缩放
-          const size = this.dot.r * 2
+          const size = this.dotR * 2
           zzIcon.attr('scale', [size / 1024, size / 1024])
           zzIcon.attr('position', [p[0] - size / 2 , p[1] - size / 2])
           this.zr.add(zzIcon)
         }
         // 每2点间画线
         if (index < arr.length - 1) {
-          const p2 = arr[index + 1].location
+          const p2 = utils.convert(arr[index + 1].location.map(n => Number(n)))
           this.zr.add(new zrender.Line({
             shape: {
               x1: p[0],
@@ -117,25 +128,25 @@
               y2: p2[1]
             },
             style: {
-              stroke:  this.line.stroke
+              stroke:  this.lineStroke
             },
-            z: this.line.z
+            z: this.lineZ
           }))
           // 画飞机图标
           // 通过svg图新建一个path
-          const air = zrender.path.createFromString(this.airSvg, {style: {fill: this.icon.fill}, z: this.icon.z})
+          const air = zrender.path.createFromString(this.airSvg, {style: {fill: this.iconFill}, z: this.iconZ})
           // 缩放
-          air.attr('scale', [this.icon.size / 1024, this.icon.size / 1024])
+          air.attr('scale', [this.iconSize / 1024, this.iconSize / 1024])
           // 航线角度
           const angle = utils.angle(p, p2, 90)
           // 根据航线方向旋转图标，让飞机头始终向着航向方向
           air.attr('rotation', Math.PI/180 * (angle))
           // 计算偏移
           let out = zrender.matrix.create()
-          zrender.matrix.rotate(out, [this.icon.size / 2, this.icon.size / 2], Math.PI/180 * (angle))
+          zrender.matrix.rotate(out, [this.iconSize / 2, this.iconSize / 2], Math.PI/180 * (angle))
           // 计算图标的起点和终点
-          const startPoint = [p[0] - this.icon.size / 2 + (this.icon.size / 2 - out[0]), p[1] - this.icon.size / 2 + (this.icon.size / 2 - out[1])]
-          const endPoint = [p2[0] - this.icon.size / 2 + (this.icon.size / 2 - out[0]), p2[1] - this.icon.size / 2 + (this.icon.size / 2 - out[1])]
+          const startPoint = [p[0] - this.iconSize / 2 + (this.iconSize / 2 - out[0]), p[1] - this.iconSize / 2 + (this.iconSize / 2 - out[1])]
+          const endPoint = [p2[0] - this.iconSize / 2 + (this.iconSize / 2 - out[0]), p2[1] - this.iconSize / 2 + (this.iconSize / 2 - out[1])]
           // air.attr('position', [startPoint , endPoint])
           // 动画效果
           const long = this.time + this.timeStop * 2 // 一个航段的动画时长
@@ -161,9 +172,11 @@
         }
       })
     },
-    destroyed () {
-      // 销毁地图
-      this.zr && zrender.dispose(this.zr)
+    beforeDestroy () {
+      if (this.zr) {
+        // 销毁地图
+        this.zr.dispose()
+      }
     },
     methods: {}
   }

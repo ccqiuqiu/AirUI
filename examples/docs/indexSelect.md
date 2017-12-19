@@ -39,19 +39,17 @@
 
 ::: demo
 ```html
-<template>
-  <air-index-select
-    :data="data"
-    :hots="hots"
-    text-field="citynameCN"
-    sub-text-field="airportnameCN"
-    group-field="airportnameEN"
-    search-hit="出发地中文/拼音/英文/机场三字码"
-    :search-fields="searchFields"
-    :tabs="tabs"
-    key-field="itatCode"
-    @on-selected="selected" />
-</template>
+<air-index-select
+  :data="data"
+  :hots="hots"
+  text-field="citynameCN"
+  sub-text-field="airportnameCN"
+  group-field="airportnameEN"
+  search-hit="出发地中文/拼音/英文/机场三字码"
+  :search-fields="searchFields"
+  :tabs="tabs"
+  key-field="itatCode"
+  @on-selected="selected" />
 
 <script>
   import {airPort} from '../../lib/res'
@@ -77,15 +75,15 @@
 ### 属性
 |属性名|类型|描述|必须|默认|
 |----|----|-------------|----|--------|
-|data|Array|要显示的数据|**是**|如果tabs不为空，那么data格式必须为[[],[]]|
-|hots|Array|热点区域要显示的内容，通过key-field属性从data里面查询得到|否|[]|
-|text-field|String|在列表中需要显示的字段名|**是**|-|
-|sub-text-field|String|在列表中显示的字段名-次要|否|''|
-|group-field|String|分组字段|**是**|-|
-|search-hit|String|搜索框的placeholder|否|''|
-|search-fields|Array|会在这个字段列表里面搜索|否|key-field的值|
 |key-field|String|主键字段|**是**|-|
-|tabs|Array|用于在列表上显示一个可以切换的标签组,tabs的length和data的length必须一致|否|-|
+|data|Array|要显示的数据|**是**|如果tabs不为空，那么data格式必须为[[],[]]|
+|text-field|String|在列表中需要显示的字段名|**是**|-|
+|group-field|String|分组字段|**是**|-|
+|hots|Array|热点区域要显示的内容，通过key-field属性从data里面查询得到|-|[]|
+|sub-text-field|String|在列表中显示的字段名-次要|-|''|
+|search-hit|String|搜索框的placeholder|-|''|
+|search-fields|Array|会在这个字段列表里面搜索|－|key-field的值|
+|tabs|Array|用于在列表上显示一个可以切换的标签组,tabs的length和data的length必须一致|－|-|
 
 ### 事件
 |事件名|描述|返回值类型|说明|
