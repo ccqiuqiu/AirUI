@@ -2,8 +2,9 @@
   "name": "airui",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": "ccqiuqiu",
   "main": "packages/index.js",
+  "license": "GPL",
   "private": false,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -13,7 +14,7 @@
     "build-lib": "node build/build-lib.js && cd packages/theme-default && gulp build",
     "build-css": "cd packages/theme-default && gulp build",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "publish": "cd lib && npm publish",
+    "publish": "node build/publish.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },

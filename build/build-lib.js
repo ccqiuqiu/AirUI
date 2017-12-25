@@ -32,7 +32,7 @@ rm(path.join(path.resolve(__dirname, '../lib/css')), err => {
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(
       '  组件库build完成\n' +
-      '  现在可以publish到npm了\n'
+      '\n'
     ))
   })
 })

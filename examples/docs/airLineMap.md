@@ -10,9 +10,7 @@
 
 ::: demo
 ```html
-<div class="demo-block">
-  <air-line-map :air-port-codes="['CAN','PEK','CSX']" />
-</div>
+  <air-line-map :codes="['CAN','PEK','CSX']" />
 ```
 :::
 
