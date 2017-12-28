@@ -59,10 +59,15 @@
       dotShadowBlur: {
         type: Number,
         default: 10
+      },
+      hd: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
       return {
+        dpr: 1,
         airPortLocations: this.codes.map(code => airPortLocation.find(l => l.airport === code)).filter(l => !!l),
         zr: null, // 画布实例
         timeStop: 1000,
@@ -71,7 +76,28 @@
         airSvg: '<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1513314660348" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="776" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M882.19306667 684.68906667l0-67.8656-305.48479999-203.648-1e-8-237.568c0 0 0-67.8656-67.8656-67.8656-67.8912 0-67.8912 67.8656-67.8912 67.8656l-1e-8 237.568L135.49226667 616.82346667l0 67.8656 305.45919999-101.8368 1e-8 190.10560001-101.8112 81.45919999 0 67.8656 169.7024-67.86560001 169.7024 67.86560001 0-67.8656-101.83680001-81.4592 2e-8-190.1056L882.19306667 684.68906667z" p-id="777"></path></svg>'
       }
     },
+    created () {
+      // 如皋开启了高清适配，获取dpr
+      if (this.hd) {
+        const ua = navigator.userAgent
+        const matches = ua.match(/Android[\S\s]+AppleWebkit\/(\d{3})/i)
+        const UCversion = ua.match(/U3\/((\d+|\.){5,})/i);
+        const isUCHd = UCversion && parseInt(UCversion[1].split('.').join(''), 10) >= 80
+        const isIos = navigator.appVersion.match(/(iphone|ipad|ipod)/gi)
+        let dpr = window.devicePixelRatio || 1
+        if (!isIos && !(matches && matches[1] > 534) && !isUCHd) {
+          dpr = 1
+        }
+        this.dpr = dpr
+      }
+    },
     mounted () {
+      // 根据dpr缩放地图上的元素
+      const dotR = this.dotR * this.dpr
+      const dotShadowBlur = this.dotShadowBlur * this.dpr
+      const iconSize = this.iconSize * this.dpr
+      const fontSize = 12 * this.dpr
+
       const width = this.$el.clientWidth
       const height = width * 2 / 3 // 长宽比  3:2
       // 初始化画布实例
@@ -90,15 +116,15 @@
             shape: {
               cx: p[0],
               cy: p[1],
-              r: this.dotR
+              r: dotR
             },
             style: {
               fill: this.dotFill,
               text: a.city,
-              fontSize: 12,
+              fontSize: fontSize,
               textPosition: 'right',
               shadowColor: this.dotFill,
-              shadowBlur: this.dotShadowBlur
+              shadowBlur: dotShadowBlur
             },
             z: this.dotZ
           }))
@@ -107,12 +133,13 @@
             style: {
               fill: this.dotFill,
               text: a.city,
-              fontSize: 12,
+              fontSize: fontSize,
               textPosition: 'right'
             },
-            z: this.dotZ})
+            z: this.dotZ
+          })
           // 缩放
-          const size = this.dotR * 2
+          const size = dotR * 2
           zzIcon.attr('scale', [size / 1024, size / 1024])
           zzIcon.attr('position', [p[0] - size / 2 , p[1] - size / 2])
           this.zr.add(zzIcon)
@@ -136,17 +163,17 @@
           // 通过svg图新建一个path
           const air = zrender.path.createFromString(this.airSvg, {style: {fill: this.iconFill}, z: this.iconZ})
           // 缩放
-          air.attr('scale', [this.iconSize / 1024, this.iconSize / 1024])
+          air.attr('scale', [iconSize / 1024, iconSize / 1024])
           // 航线角度
           const angle = utils.angle(p, p2, 90)
           // 根据航线方向旋转图标，让飞机头始终向着航向方向
           air.attr('rotation', Math.PI/180 * (angle))
           // 计算偏移
           let out = zrender.matrix.create()
-          zrender.matrix.rotate(out, [this.iconSize / 2, this.iconSize / 2], Math.PI/180 * (angle))
+          zrender.matrix.rotate(out, [iconSize / 2, iconSize / 2], Math.PI/180 * (angle))
           // 计算图标的起点和终点
-          const startPoint = [p[0] - this.iconSize / 2 + (this.iconSize / 2 - out[0]), p[1] - this.iconSize / 2 + (this.iconSize / 2 - out[1])]
-          const endPoint = [p2[0] - this.iconSize / 2 + (this.iconSize / 2 - out[0]), p2[1] - this.iconSize / 2 + (this.iconSize / 2 - out[1])]
+          const startPoint = [p[0] - iconSize / 2 + (iconSize / 2 - out[0]), p[1] - iconSize / 2 + (iconSize / 2 - out[1])]
+          const endPoint = [p2[0] - iconSize / 2 + (iconSize / 2 - out[0]), p2[1] - iconSize / 2 + (iconSize / 2 - out[1])]
           // air.attr('position', [startPoint , endPoint])
           // 动画效果
           const long = this.time + this.timeStop * 2 // 一个航段的动画时长

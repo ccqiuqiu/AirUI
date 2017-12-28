@@ -28,4 +28,5 @@
 |dot-fill|String|关键点颜色|-|#ff2d7d|
 |dot-R|Number|关键点半径|-|8|
 |dot-z|Number|关键点z-index|-|20|
+|hd|Boolen|是否开始高清缩放，会根据dpr缩放关键点和图标的大小|-|true|
 
