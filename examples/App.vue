@@ -38,7 +38,7 @@ export default {
 <style lang="less" type="text/less">
   @import "./assets/less/index";
   .container{
-    margin: 48px auto;
+    margin: 48px auto 108px;
     width: 90%;
     background-color: #fff;
     box-shadow: 0 4px 30px 0 rgba(223,225,230,0.5);
