@@ -7,10 +7,9 @@
   "license": "GPL",
   "private": false,
   "scripts": {
-    "init": "npm install && cd packages/theme-default/ && npm install",
     "dev": "node build/dev-server.js",
     "dev-css": "cd packages/theme-default && npm run dev",
-    "start": "npm run dev",
+    "start": "npm install && cd packages/theme-default/ && npm install",
     "build-doc": "node build/build.js",
     "build-lib": "node build/build-lib.js && cd packages/theme-default && gulp build",
     "build-css": "cd packages/theme-default && gulp build",
