@@ -15,6 +15,6 @@ import 'airui-vue/css/index.css'
 Vue.use(AirUI)
 ```
 
-### 贡献者
+### Contributors
 
 [ccqiuqiu](https://github.com/ccqiuqiu)

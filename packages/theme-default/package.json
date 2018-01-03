@@ -1,7 +1,7 @@
 {
-  "name": "vv-ui-theme-default",
+  "name": "theme-default",
   "version": "1.0.0",
-  "description": "vv-ui component default theme.",
+  "description": "",
   "main": "lib/index.css",
   "scripts": {
     "dev": "gulp build && gulp watch",
@@ -11,8 +11,8 @@
     "air-ui",
     "theme"
   ],
-  "author": "monkeywang",
-  "license": "MIT",
+  "author": "",
+  "license": "",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cssmin": "^0.1.7",
