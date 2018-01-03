@@ -44,6 +44,7 @@
     flex-direction: column;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 32px;
   }
   @e index{
     padding: 4px 0;
