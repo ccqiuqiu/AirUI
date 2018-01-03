@@ -7,7 +7,7 @@
 #### 开发常用命令
 
 ```bash
-npm run init // 首次安装
+npm run install // 首次安装
 npm run dev  // 启动开发模式
 npm run dev-css // 主题样式监听，如果开发的组件有使用主题，这个必须开启
 npm run build-doc // 编译文档
