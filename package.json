@@ -1,11 +1,15 @@
 {
   "name": "airui",
   "version": "0.0.1",
-  "description": "",
+  "description": "airui-vue",
   "author": "ccqiuqiu",
   "main": "packages/index.js",
-  "license": "GPL",
+  "license": "GPL-3.0",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccqiuqiu/AirUI"
+  },
   "scripts": {
     "dev": "node build/dev-server.js",
     "dev-css": "cd packages/theme-default && npm run dev",
@@ -28,7 +32,6 @@
     "markdown-it-container": "^2.0.0",
     "moment": "^2.19.2",
     "path": "^0.12.7",
-    "semver": "^5.4.1",
     "transliteration": "^1.6.2",
     "vue": "^2.5.2",
     "vue-markdown-loader": "^2.2.3",
