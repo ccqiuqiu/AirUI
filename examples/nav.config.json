@@ -40,11 +40,6 @@
           "desc": "待开发",
           "name": "",
           "path": "/"
-        },
-        {
-          "desc": "按钮",
-          "name": "button",
-          "path": "/button"
         }
       ]
     },
