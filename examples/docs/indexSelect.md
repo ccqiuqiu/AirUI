@@ -1,7 +1,7 @@
 # IndexSelect 索引选择器
 ----
 
-带索引和搜索功能的选择器组件，用于机场选择、城市选择、联系人选择等场景。索引条支持滑动选择
+> 带索引和搜索功能的选择器组件，用于机场选择、城市选择、联系人选择等场景。索引条支持滑动选择
 
 ### 基础用法
 
@@ -19,7 +19,7 @@
     @on-selected="selected" />
 </div>
 <script>
-  import {airPort} from '../../lib/res'
+  import {airPort} from '../../packages/res'
   export default {
     data () {
       return {
@@ -52,7 +52,7 @@
   @on-selected="selected" />
 
 <script>
-  import {airPort} from '../../lib/res'
+  import {airPort} from 'airui-vue/res'
   export default {
     data () {
       return {

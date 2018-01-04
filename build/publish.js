@@ -3,7 +3,8 @@ require('shelljs/global')
 
 const inquirer = require('inquirer')
 const chalk = require('chalk')
-const package = require('../lib/package.json')
+const package = require('../packages/package.json')
+const packageMain = require('../package.json')
 const fs = require('fs')
 
 inquirer.prompt([{
@@ -29,11 +30,15 @@ inquirer.prompt([{
     return
   }
   package.version = answers.message
-  fs.writeFileSync('lib/package.json', JSON.stringify(package, null, 2))
+  fs.writeFileSync('packages/package.json', JSON.stringify(package, null, 2))
+
+  packageMain.version = answers.message
+  fs.writeFileSync('package.json', JSON.stringify(packageMain, null, 2))
+
   console.log(chalk.green(`   即将开始发布V${answers.message}...`))
   let build = answers.conform ? 'npm run build-lib &&' : ''
   let cmd = `${build}
-  cd lib
+  cd packages
   npm publish`
 
   exec(cmd)

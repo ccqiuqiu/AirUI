@@ -1,5 +1,5 @@
-import AirIndexSelect from './indexSelect'
-import AirLineMap from './airLineMap'
+import AirIndexSelect from './components/AirIndexSelect'
+import AirLineMap from './components/AirLineMap'
 
 const components = [
   AirIndexSelect,
@@ -16,7 +16,5 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-  install,
-  AirIndexSelect,
-  AirLineMap
+  install
 }

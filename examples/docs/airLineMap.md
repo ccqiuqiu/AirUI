@@ -1,6 +1,9 @@
 # AirLineMap 航线地图
 ----
 
+> 在地图上绘制机场间的航线
+
+**注意:** 按需使用组件需要安装 [zrender](https://ecomfe.github.io/zrender-doc/public/)
 
 ### 基础用法
 

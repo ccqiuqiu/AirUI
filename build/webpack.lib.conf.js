@@ -32,7 +32,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   devtool: false,
   output: {
-    path: path.resolve(__dirname, '../lib'),
+    path: path.resolve(__dirname, '../packages/lib'),
     filename: 'index.js',
     library: 'AirUI',
     libraryTarget: 'umd'

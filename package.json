@@ -1,6 +1,6 @@
 {
   "name": "airui",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "description": "airui-vue",
   "author": "ccqiuqiu",
   "main": "packages/index.js",
@@ -15,8 +15,8 @@
     "dev-css": "cd packages/theme-default && npm run dev",
     "start": "npm install && cd packages/theme-default/ && npm install",
     "build-doc": "node build/build.js",
-    "build-lib": "node build/build-lib.js && cd packages/theme-default && gulp build",
-    "build-css": "cd packages/theme-default && gulp build",
+    "build-lib": "node build/build-lib.js && cd packages/theme && gulp build",
+    "build-css": "cd packages/theme && gulp build",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "publish": "node build/publish.js",
     "test": "npm run unit",
