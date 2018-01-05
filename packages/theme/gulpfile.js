@@ -23,14 +23,8 @@ gulp.task('compile', function() {
     .pipe(gulp.dest('./css'))
 })
 
-gulp.task('copyfont', function() {
-  return gulp.src('./src/fonts/**')
-    .pipe(cssmin())
-    .pipe(gulp.dest('./lib/fonts'))
-})
-
-
-gulp.task('build', ['clear', 'compile', 'copyfont'])
+gulp.task('build', ['clear', 'compile'])
+gulp.task('build2', ['compile'])
 gulp.task('watch', function () {
-  gulp.watch('./src/*.less', ['compile'])
+  gulp.watch('./src/*.less', ['build2'])
 })
