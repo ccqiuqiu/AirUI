@@ -40,6 +40,11 @@
           "desc": "待开发",
           "name": "",
           "path": "/"
+        },
+        {
+          "desc": "输入框",
+          "name": "input",
+          "path": "/input"
         }
       ]
     },

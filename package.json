@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "node build/dev-server.js",
-    "dev-css": "cd packages/theme && gulp build && gulp watch",
+    "dev-css": "cd packages/theme && gulp watch",
     "build-doc": "node build/build.js",
     "build-lib": "node build/build-lib.js && cd packages/theme && gulp build",
     "build-css": "cd packages/theme && gulp build",

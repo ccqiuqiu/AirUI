@@ -3,10 +3,12 @@
  */
 import AirIndexSelect from './components/AirIndexSelect'
 import AirLineMap from './components/AirLineMap'
+import AirInput from './components/AirInput'
 
 const components = [
   AirIndexSelect,
-  AirLineMap
+  AirLineMap,
+  AirInput
 ]
 
 const install = function (Vue) {
