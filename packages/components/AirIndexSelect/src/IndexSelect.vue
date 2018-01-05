@@ -12,7 +12,7 @@
     </div>
     <div class="air-index-select__content" @scroll="scroll">
       <div class="air-index-select__list">
-        <dl :class="['air-index-select__dl', 'air-index-select__key-hot']" v-show="!keyword">
+        <dl :class="['air-index-select__dl', 'air-index-select__hot']" v-show="!keyword">
           <dt>热门</dt>
           <dd>
             <span v-for="item in hotData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
