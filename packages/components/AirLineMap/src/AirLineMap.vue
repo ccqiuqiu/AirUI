@@ -208,9 +208,3 @@
     methods: {}
   }
 </script>
-
-<style scoped>
-  .air-line-map{
-    width: 100%;
-  }
-</style>

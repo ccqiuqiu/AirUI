@@ -12,8 +12,7 @@
   },
   "scripts": {
     "dev": "node build/dev-server.js",
-    "dev-css": "cd packages/theme-default && npm run dev",
-    "start": "npm install && cd packages/theme-default/ && npm install",
+    "dev-css": "cd packages/theme && gulp build && gulp watch",
     "build-doc": "node build/build.js",
     "build-lib": "node build/build-lib.js && cd packages/theme && gulp build",
     "build-css": "cd packages/theme && gulp build",
@@ -101,7 +100,13 @@
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.18.2",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-postcss": "^6.1.1",
+    "gulp-less": "^3.4.0",
+    "gulp-strip-debug": "^2.0.0",
+    "vinyl-paths": "^2.1.0"
   },
   "engines": {
     "node": ">= 4.0.0",
