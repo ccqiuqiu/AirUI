@@ -42,9 +42,9 @@
           "path": "/"
         },
         {
-          "desc": "输入框",
-          "name": "input",
-          "path": "/input"
+          "desc": "手风琴",
+          "name": "accordion",
+          "path": "/accordion"
         }
       ]
     },

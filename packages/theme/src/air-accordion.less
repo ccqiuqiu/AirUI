@@ -1,0 +1,91 @@
+/**
+ * Created by 熊超超(https://github.com/ccqiuqiu) on 2017/11/15.
+ */
+
+// 正常的样式
+.air-accordion{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+
+  &__container{
+    border-top: 1px solid rgba(0,0,0,0.12);
+    background-color: #fff;
+    color: rgba(0,0,0,0.87);
+    flex: 1 0 100%;
+    max-width: 100%;
+    outline: none;
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+    &__header .icon{
+      color: rgba(0,0,0,0.54);
+    }
+
+    .header__icon{
+      margin-left: auto;
+
+      .icon {
+        transition: none;
+      }
+    }
+  }
+
+  &__container:first-child {
+    border-top: none !important;
+  }
+
+  &__header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    position: relative;
+    padding: 12px 24px;
+  }
+
+  &__container--active > &__header .header__icon .icon {
+    transform: rotate(-180deg);
+  }
+
+  &__header > *:not(.header__icon) {
+    flex: 1 1 auto;
+  }
+
+  &__body {
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+
+    .card {
+      border-radius: 0;
+      box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);
+    }
+  }
+
+  // focusable的样式
+  &--focusable &__container:focus{
+    background-color: #eee;
+  }
+
+  // popout和inset的样式
+  &--popout, &--inset {
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2), 0px 0px 0px 0px rgba(0,0,0,0.14), 0px 0px 0px 0px rgba(0,0,0,0.12);
+  }
+  &--popout &__container--active, &--inset &__container--active {
+    margin: 16px;
+    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
+  }
+  &--popout &__container, &--inset &__container {
+    max-width: 95%;
+  }
+  &--popout &__container--active {
+    max-width: 100%;
+  }
+  &--inset &__container--active {
+    max-width: 85%;
+  }
+}

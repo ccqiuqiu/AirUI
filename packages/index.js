@@ -3,12 +3,13 @@
  */
 import AirIndexSelect from './components/AirIndexSelect'
 import AirLineMap from './components/AirLineMap'
-import AirInput from './components/AirInput'
+import {AirAccordion, AirAccordionContent} from './components/AirAccordion'
 
 const components = [
   AirIndexSelect,
   AirLineMap,
-  AirInput
+  AirAccordion,
+  AirAccordionContent
 ]
 
 const install = function (Vue) {
