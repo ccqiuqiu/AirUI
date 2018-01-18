@@ -8,6 +8,9 @@
   flex-direction: column;
   position: relative;
 
+  ::after{
+    display: none;
+  }
   &__top {
     flex: none;
     box-shadow: 0px 3px 10px #ccc;
@@ -48,6 +51,11 @@
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 32px;
+
+    ::after{
+      content: "";
+      min-height: calc(100% + 1Px);
+    }
   }
   &__index {
     padding: 4px 0;
