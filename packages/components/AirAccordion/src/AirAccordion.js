@@ -3,21 +3,18 @@
  */
 export default {
   name: 'AirAccordion',
-
   provide () {
     return {
       panelClick: this.panelClick,
       focusable: this.focusable
     }
   },
-
   props: {
     expand: Boolean,
     focusable: Boolean,
     inset: Boolean,
     popout: Boolean
   },
-
   methods: {
     getChildren () {
       return this.$children.filter(c => {
@@ -42,15 +39,13 @@ export default {
       }
     }
   },
-
   render (h) {
     return h('ul', {
       staticClass: 'air-accordion',
       'class': {
         'air-accordion--focusable': this.focusable,
         'air-accordion--popout': this.popout,
-        'air-accordion--inset': this.inset,
-        ...this.themeClasses
+        'air-accordion--inset': this.inset
       }
     }, this.$slots.default)
   }
