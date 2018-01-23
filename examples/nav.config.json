@@ -61,6 +61,11 @@
           "desc": "航线地图",
           "name": "airLineMap",
           "path": "/airLineMap"
+        },
+        {
+          "desc": "横向日历",
+          "name": "calenderH",
+          "path": "/calenderH"
         }
       ]
     }

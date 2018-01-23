@@ -1,6 +1,6 @@
 {
   "name": "airui",
-  "version": "0.1.8",
+  "version": "0.1.16",
   "description": "airui-vue",
   "author": "ccqiuqiu",
   "main": "packages/index.js",
@@ -23,12 +23,14 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "date-fns": "^2.0.0-alpha.7",
     "fs": "^0.0.1-security",
     "inquirer": "^4.0.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "markdown-it-anchor": "^4.0.0",
     "markdown-it-container": "^2.0.0",
+    "mockjs": "^1.0.1-beta3",
     "moment": "^2.19.2",
     "path": "^0.12.7",
     "transliteration": "^1.6.2",

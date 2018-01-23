@@ -1,6 +1,6 @@
 {
   "name": "airui-vue",
-  "version": "0.1.8",
+  "version": "0.1.16",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "url": "https://github.com/ccqiuqiu/AirUI"
   },
   "dependencies": {
-    "zrender": "^3.7.4"
+    "zrender": "^3.7.4",
+    "date-fns": "^2.0.0-alpha.7"
   }
 }

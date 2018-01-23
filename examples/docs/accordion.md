@@ -1,4 +1,4 @@
-# AirAccordion 可折叠组件
+# AirAccordion 手风琴(可折叠)组件
 ----
 
 > 可折叠组件
