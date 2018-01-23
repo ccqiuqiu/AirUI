@@ -8,7 +8,7 @@
   <air-accordion>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -21,7 +21,7 @@
   <air-accordion>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -35,7 +35,7 @@
   <air-accordion expand>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -48,7 +48,7 @@
   <air-accordion expand>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -62,7 +62,7 @@
   <air-accordion inset>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -75,7 +75,7 @@
   <air-accordion inset>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -89,7 +89,7 @@
   <air-accordion popout>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -102,7 +102,7 @@
   <air-accordion popout>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -116,7 +116,7 @@
   <air-accordion focusable>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>
@@ -129,7 +129,7 @@
   <air-accordion focusable>
     <air-accordion-content v-for="(item,i) in 5" :key="i">
       <span slot="icon">v</span>
-      <div slot="header">Item</div>
+      <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
         <p v-for="a in i+1">asdasd</p>
       </div>

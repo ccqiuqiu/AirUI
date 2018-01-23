@@ -38,9 +38,9 @@ export default {
       ])
     },
     genIcon(h) {
-      return this.$createElement('div', {
+      return this.$slots.icon ? this.$createElement('div', {
         staticClass: 'header__icon'
-      }, [this.$slots.icon])
+      }, [this.$slots.icon]) : null
     },
     toggle(uid) {
       const isActive = this._uid === uid && !this.isActive
