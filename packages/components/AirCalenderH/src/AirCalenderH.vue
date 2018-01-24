@@ -38,7 +38,6 @@
 <script>
   import addDays from 'date-fns/esm/addDays'
   import format from 'date-fns/esm/format'
-  import differenceInHours from 'date-fns/esm/differenceInHours'
   import { zhCN as locale } from 'date-fns/esm/locale'
   import throttle from '../../../utils/throttle'
 
@@ -50,7 +49,7 @@
         default: () => new Date()
       },
       endDate: Date,
-      activeDate: {
+      value: {
         type: Date,
         default: () => new Date()
       },
@@ -64,12 +63,16 @@
     },
     data () {
       return {
-        list: this.init(),
+        // activeDate: this.value,
+        list: [],
         index: 4, // 激活的日期的索引
         noAnim: false // 不要动画，用于移动到边界的时候，瞬间调整位置
       }
     },
     computed: {
+      activeDate () {
+        return this.list.length > 0 ? this.list[this.index].date : this.value
+      },
       transform () {
         return {
           transition: this.noAnim ? 'none' :'all 0.3s',
@@ -78,12 +81,23 @@
       },
       disableLeft () {
         // 激活的日期比最小日期少24个小时，禁用后退
-        return this.startDate && differenceInHours(this.list[this.index].date, this.startDate) < 24
+        return this.startDate && format(this.list[this.index].date, 'YYYYMMDD') - format(this.startDate, 'YYYYMMDD') <= 0
       },
       disableRight () {
         // 激活日期比最大日期大或相等，禁用前进
-        return this.endDate && differenceInHours(this.list[this.index].date, this.endDate) >= 0
+        return this.endDate && format(this.list[this.index].date, 'YYYYMMDD') - format(this.endDate, 'YYYYMMDD') >= 0
       }
+    },
+    watch: {
+      activeDate (val, oldVal) {
+        if (format(val, 'YYYYMMDD') !== format(oldVal, 'YYYYMMDD')) {
+          this.$emit('input', val)
+          this.$emit('change', val)
+        }
+      }
+    },
+    created () {
+      this.init()
     },
     methods: {
       // 初始化要显示的日期数组
@@ -95,11 +109,11 @@
         // 最终结果应该是这样的结构[23,24,20,21,22,23,24,20,21]
         const temp1 = [this.createItem(addDays(this.activeDate, -2)), this.createItem(addDays(this.activeDate, -1))]
         const temp2 = [this.createItem(addDays(this.activeDate, 1)), this.createItem(addDays(this.activeDate, 2))]
-        return [...temp2, ...temp1, this.createItem(this.activeDate), ...temp2, ...temp1]
+        this.list = [...temp2, ...temp1, this.createItem(this.activeDate), ...temp2, ...temp1]
       },
       createItem (date) {
-        const disable = this.startDate && differenceInHours(this.startDate, date) >= 24
-          || this.endDate && differenceInHours(date, this.endDate) >= 24
+        const disable = this.startDate && format(date, 'YYYYMMDD') - format(this.startDate, 'YYYYMMDD') < 0
+          || this.endDate && format(date, 'YYYYMMDD') - format(this.endDate, 'YYYYMMDD') > 0
         const y = format(date, 'YYYY')
         const m = format(date, 'MM')
         const d = format(date, 'DD')
