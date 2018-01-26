@@ -31,7 +31,7 @@
         for (let i = -1; i < 365; i++) {
           data.push({
             date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: '￥' + parseInt(Math.random() * 1000)
+            text: parseInt(Math.random() * 1000)
           })
         }
         return data
@@ -70,7 +70,7 @@
         for (let i = -1; i < 365; i++) {
           data.push({
             date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: '￥' + parseInt(Math.random() * 1000)
+            text: parseInt(Math.random() * 1000)
           })
         }
         return data
@@ -116,7 +116,7 @@
         for (let i = -1; i < 365; i++) {
           data.push({
             date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: '￥' + parseInt(Math.random() * 1000)
+            text: parseInt(Math.random() * 1000)
           })
         }
         return data
@@ -170,7 +170,7 @@
         for (let i = -1; i < 365; i++) {
           data.push({
             date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: '￥' + parseInt(Math.random() * 1000)
+            text: parseInt(Math.random() * 1000)
           })
         }
         return data
@@ -214,7 +214,7 @@
         for (let i = -1; i < 365; i++) {
           data.push({
             date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: '￥' + parseInt(Math.random() * 1000)
+            text: parseInt(Math.random() * 1000)
           })
         }
         return data
@@ -244,7 +244,7 @@
 |pre-text|String|上一天的文本，设置后，当前日期的上一天不显示实际日期，显示为设置的文本|-|-|
 |clickEnable|Boolean|除了点击左右按钮，点击日期也能切换|-|false|
 
-### Slots(air-accordion-content)
+### Slots
 |Name|描述|
 |----|----|
 |icon|激活的日期右边显示的图标|

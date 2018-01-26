@@ -40,11 +40,6 @@
           "desc": "待开发",
           "name": "",
           "path": "/"
-        },
-        {
-          "desc": "手风琴",
-          "name": "accordion",
-          "path": "/accordion"
         }
       ]
     },
@@ -63,9 +58,19 @@
           "path": "/airLineMap"
         },
         {
+          "desc": "手风琴",
+          "name": "accordion",
+          "path": "/accordion"
+        },
+        {
           "desc": "横向日历",
           "name": "calenderH",
           "path": "/calenderH"
+        },
+        {
+          "desc": "纵向日历",
+          "name": "calenderV",
+          "path": "/calenderV"
         }
       ]
     }

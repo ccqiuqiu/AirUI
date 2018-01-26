@@ -1,0 +1,180 @@
+/**
+ * Created by 熊超超(https://github.com/ccqiuqiu) on 2018/01/25.
+ */
+@c1: #c93d3c;
+@c2: #3FAAF5;
+@bg: #ebecee;
+@bg-area: #ebecee;
+.air-calender-v{
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &--week{
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+
+    > span{
+      flex: auto;
+      text-align: center;
+    }
+  }
+
+  &--content{
+    padding: 0 16px;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  &--title {
+    border-bottom: 1Px solid @bg;
+    padding: 10px 0;
+    display: flex;
+    align-items: baseline;
+
+    >span:first-child{
+      font-size: 24px;
+    }
+
+    > .price {
+      text-align: right;
+      flex: 1 0 auto;
+    }
+  }
+
+  &--days{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 16px 0;
+
+    > span{
+      flex: 0 0 ~"calc(1 / 7 * 100%)";
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      border-bottom: 1Px @bg dashed;
+      font-weight: bold;
+      position: relative;
+    }
+    .null {
+      border-bottom: 0;
+    }
+
+    .disable{
+      opacity: 0.2;
+    }
+
+    .price{
+      opacity: 0.8;
+    }
+
+    .day{
+      font-size: 18px;
+      text-align: center;
+      width: 26px;
+      height: 26px;
+      line-height: 26px;
+      overflow: hidden;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .area{
+      text-align: center;
+      height: 26px;
+      width: 100%;
+      background-color: @bg-area;
+      position: absolute;
+      top: 0;
+
+    }
+    .is-area.active1 .area{
+      width: 50%;
+      right: 0;
+    }
+    .is-area.active2 .area{
+      width: 50%;
+      left: 0;
+    }
+    .weekend{
+      color: @c1;
+    }
+
+    .active1 .day{
+      color: white;
+      background-color: @c1;
+      border-radius: 50%;
+    }
+
+    .active2 .day{
+      color: white;
+      background-color: @c2;
+      border-radius: 50%;
+    }
+  }
+
+  &--wbg{
+    background-color :@bg;
+  }
+
+  &--btn{
+    flex: 0 0 auto;
+
+    > div{
+      text-align: center;
+      font-size: 18px;
+      padding: 8px;
+      color: white;
+      background-color: @c1;
+    }
+  }
+
+  &--header{
+    flex: 0 0 auto;
+    margin: 0 24px;
+    display: flex;
+    >div{
+      flex: auto;
+      opacity: 0.6;
+      font-size: 12px;
+      margin: 0 20px;
+      padding: 10px 0 6px;
+
+      .text{
+        font-size: 16px;
+      }
+
+      span {
+        display: block;
+        text-align: center;
+      }
+    }
+    >div.active{
+      opacity: 1;
+      border-bottom: 2px solid @c1;
+    }
+  }
+  &__select2 &--header{
+    >div.active{
+      border-bottom: 2px solid @c2;
+    }
+  }
+
+  &__select1{
+    .low{
+      border-bottom: 2Px @c1 solid;
+    }
+  }
+  &__select2{
+    .low{
+      border-bottom: 2Px @c2 solid;
+    }
+  }
+}

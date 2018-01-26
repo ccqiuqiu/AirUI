@@ -1,5 +1,6 @@
 <style lang="less" type="text/less" scoped>
   .page-footer {
+    z-index: 100;
     position: fixed;
     width: 100%;
     bottom: 0;

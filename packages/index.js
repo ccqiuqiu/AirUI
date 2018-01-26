@@ -5,13 +5,15 @@ import AirIndexSelect from './components/AirIndexSelect'
 import AirLineMap from './components/AirLineMap'
 import {AirAccordion, AirAccordionContent} from './components/AirAccordion'
 import AirCalenderH from './components/AirCalenderH'
+import AirCalenderV from './components/AirCalenderV'
 
 const components = [
   AirIndexSelect,
   AirLineMap,
   AirAccordion,
   AirAccordionContent,
-  AirCalenderH
+  AirCalenderH,
+  AirCalenderV
 ]
 
 const install = function (Vue) {

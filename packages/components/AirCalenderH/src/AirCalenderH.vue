@@ -20,7 +20,7 @@
                   <span>{{i < index ? preText : nextText}}</span>
                 </template>
               </div>
-              <div class="air-calender-h--data" v-if="item.text">{{item.text}}</div>
+              <div class="air-calender-h--data" v-if="item.text">{{currency + item.text}}</div>
               <div class="air-calender-h--data" v-else>&nbsp;</div>
             </div>
             <span class="air-calender-h--icon" v-if="$slots.icon"><slot name="icon" v-if="i === index"/></span>
@@ -38,6 +38,7 @@
 <script>
   import addDays from 'date-fns/esm/addDays'
   import format from 'date-fns/esm/format'
+  import isBefore from 'date-fns/esm/isBefore'
   import { zhCN as locale } from 'date-fns/esm/locale'
   import throttle from '../../../utils/throttle'
 
@@ -59,7 +60,11 @@
       },
       nextText: String,
       preText: String,
-      clickEnable: Boolean
+      clickEnable: Boolean,
+      currency: {
+        type: String,
+        default: '￥'
+      }
     },
     data () {
       return {
@@ -80,12 +85,12 @@
         }
       },
       disableLeft () {
-        // 激活的日期比最小日期少24个小时，禁用后退
-        return this.startDate && format(this.list[this.index].date, 'YYYYMMDD') - format(this.startDate, 'YYYYMMDD') <= 0
+        // 开始时间不在激活时间前，禁用后退
+        return this.startDate && !isBefore(this.startDate, this.list[this.index].date)
       },
       disableRight () {
-        // 激活日期比最大日期大或相等，禁用前进
-        return this.endDate && format(this.list[this.index].date, 'YYYYMMDD') - format(this.endDate, 'YYYYMMDD') >= 0
+        // 激活时间不在结束时间前，禁用前进
+        return this.endDate && !isBefore(this.list[this.index].date, this.endDate)
       }
     },
     watch: {
