@@ -1,5 +1,7 @@
 ## airui-vue
 
+[doc](https://wintelia.github.io)
+
 ### install
 
 ```js
