@@ -45,11 +45,12 @@
     flex: 1 0 0;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 32px;
 
-    > div{
+    >div{
       min-height: calc(100% + 1Px);
     }
   }
@@ -66,6 +67,7 @@
     flex-direction: column;
 
     &--tabs {
+      z-index: 12;
       top: 97px;
       height: ~"calc(100% - 50px - 47px)";
     }
@@ -131,5 +133,9 @@
   &__sub-text {
     font-size: 14px;
     color: #AAA;
+  }
+
+  &.scroll &__content{
+    padding-bottom: 0;
   }
 }

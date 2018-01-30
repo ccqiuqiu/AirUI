@@ -23,14 +23,10 @@
       },
       methods: {
         initData () {
-          const data = []
-          for (let i = 0; i < 365; i++) {
-            data.push({
-              date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-              text: parseInt(Math.random() * 1000)
-            })
-          }
-          return data
+          return Array.apply(null, {length: 365}).map((item, i) => ({
+            date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
+            text: parseInt(Math.random() * 1000)
+          }))
         }
       }
     }
@@ -58,14 +54,10 @@
       },
       methods: {
         initData () {
-          const data = []
-          for (let i = 0; i < 365; i++) {
-            data.push({
-              date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-              text: parseInt(Math.random() * 1000)
-            })
-          }
-          return data
+          return Array.apply(null, {length: 365}).map((item, i) => ({
+            date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
+            text: parseInt(Math.random() * 1000)
+          }))
         }
       }
     }
@@ -94,14 +86,10 @@
       },
       methods: {
         initData () {
-          const data = []
-          for (let i = 0; i < 365; i++) {
-            data.push({
-              date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-              text: parseInt(Math.random() * 1000)
-            })
-          }
-          return data
+          return Array.apply(null, {length: 365}).map((item, i) => ({
+            date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
+            text: parseInt(Math.random() * 1000)
+          }))
         }
       }
     }
@@ -121,14 +109,10 @@
     },
     methods: {
       initData () {
-        const data = []
-        for (let i = 0; i < 365; i++) {
-          data.push({
-            date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
-            text: parseInt(Math.random() * 1000)
-          })
-        }
-        return data
+        return Array.apply(null, {length: 365}).map((item, i) => ({
+          date: format(addDays(new Date(), i), 'YYYY-MM-DD'),
+          text: parseInt(Math.random() * 1000)
+        }))
       }
     }
   }

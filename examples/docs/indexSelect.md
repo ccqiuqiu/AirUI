@@ -72,6 +72,57 @@
 ```
 :::
 
+### better-scroll版本,滑动效果更好一些
+
+<div class="demo-block demo-block-m">
+  <air-index-list
+    :data="data"
+    :hots="hots"
+    text-field="citynameCN"
+    sub-text-field="airportnameCN"
+    group-field="airportnameEN"
+    search-hit="出发地中文/拼音/英文/机场三字码"
+    :search-fields="searchFields"
+    :tabs="tabs"
+    key-field="itatCode"
+    @on-selected="selected" />
+</div>
+
+::: demo
+```html
+<air-index-list
+  :data="data"
+  :hots="hots"
+  text-field="citynameCN"
+  sub-text-field="airportnameCN"
+  group-field="airportnameEN"
+  search-hit="出发地中文/拼音/英文/机场三字码"
+  :search-fields="searchFields"
+  :tabs="tabs"
+  key-field="itatCode"
+  @on-selected="selected" />
+
+<script>
+  import {airPort} from 'airui-vue/res'
+  export default {
+    data () {
+      return {
+        data: [airPort.filter(item => item.countrynameEN === 'CN'), airPort.filter(item => item.countrynameEN !== 'CN')],
+        searchFields: ['itatCode','airportnameEN'],
+        hots: ['WAW', 'LAX', 'GRU', 'SCL', 'TYO', 'SHA', 'CAN'],
+        tabs: ['国内', '国际']
+      }
+    },
+    methods: {
+      selected(item){
+       console.log(item)
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 属性
 |属性名|类型|描述|必须|默认|
 |----|----|-------------|----|--------|

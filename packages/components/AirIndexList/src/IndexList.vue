@@ -1,6 +1,6 @@
 <!--Created by 熊超超(https://github.com/ccqiuqiu) on 2017/11/15.-->
 <template>
-  <div class="air-index-select">
+  <div class="air-index-select scroll">
     <div class="air-index-select__top">
       <div class="air-index-select__search">
         <input type="text" :placeholder="searchHit" v-model.trim="keyword" />
@@ -10,8 +10,8 @@
               :style="{borderColor: index === tabIndex ? activeColor : 'transparent', color: index === tabIndex ? '#333333' : '#AAAAAA'}">{{tab}}</span>
       </div>
     </div>
-    <div class="air-index-select__content" @scroll="scroll">
-      <div class="air-index-select__list">
+    <div class="air-index-select__content">
+      <scroll class="air-index-select__list" ref="scroll" noRoot listenScroll @scroll="scroll" :probeType="2" :scrollbar="false">
         <dl :class="['air-index-select__dl', 'air-index-select__key-hot']" v-show="!keyword">
           <dt>热门</dt>
           <dd>
@@ -25,7 +25,7 @@
             <span class="air-index-select__sub-text">{{item[subTextField]}}</span>
           </dd>
         </dl>
-      </div>
+      </scroll>
     </div>
     <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}]">
       <template v-for="char in index">
@@ -37,8 +37,10 @@
   </div>
 </template>
 <script>
+  import Scroll from '../../common/Scroll'
   export default{
-    name: 'AirIndexSelect',
+    name: 'AirIndexList',
+    components: {Scroll},
     props: {
       data: {
         type: Array,
@@ -71,7 +73,6 @@
     },
     data () {
       return {
-        index: [...'热ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
         tip: '', // 提示文字
         active: '热', // index上面激活的文字
         topDom: null,
@@ -119,6 +120,10 @@
           this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map(dt => ({char: dt.innerText, y: dt.offsetTop}))
         })
         return temp
+      },
+      index () {
+        // const is = [...'热ABCDEFGHIJKLMNOPQRSTUVWXYZ']
+        return ['热', ...Object.keys(this.listData)]
       }
     },
     mounted () {
@@ -175,8 +180,9 @@
         this.tip = char
         this.active = char
       },
-      scroll () {
-        const dts = this.titleOffsetTops.filter(dt => dt.y - this.contentDom.scrollTop <= this.topDom.clientHeight)
+      scroll ({y}) {
+        y = Math.abs(Math.min(y, 0))
+        const dts = this.titleOffsetTops.filter(dt => dt.y - y <= 0)
         if (dts && dts.length > 0) {
           // this.tip = dts[dts.length - 1].char.charAt(0)
           this.active = dts[dts.length - 1].char.charAt(0)
@@ -189,9 +195,11 @@
     },
     watch: {
       tip (char) {
+        console.log(char)
         const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
         if (titleDom) {
-          this.contentDom.scrollTop = titleDom.offsetTop - this.topDom.clientHeight
+          // this.contentDom.scrollTop = titleDom.offsetTop - this.topDom.clientHeight
+          this.$refs.scroll.scrollToElement(titleDom, 200)
         }
       }
     }
