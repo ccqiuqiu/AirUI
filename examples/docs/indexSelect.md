@@ -72,7 +72,7 @@
 ```
 :::
 
-### better-scroll版本,滑动效果更好一些
+### 使用了AirScroll组件的版本,滑动效果更好一些
 
 <div class="demo-block demo-block-m">
   <air-index-list

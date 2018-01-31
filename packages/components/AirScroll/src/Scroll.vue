@@ -1,6 +1,6 @@
 <!--Created by 熊超超(https://github.com/ccqiuqiu) on 2018/1/30.-->
 <template>
-  <div ref="wrapper" class="scroll-wrapper" :style="{position: noRoot ? 'relative': 'absolute'}">
+  <div ref="wrapper" class="air-scroll" :style="{position: noRoot ? 'relative': 'absolute'}">
     <div class="scroll-content" ref="listWrapper">
       <slot></slot>
       <slot name="pullup" :pullUpLoad="pullUpLoad" :isPullUpLoad="isPullUpLoad">
@@ -41,21 +41,15 @@
   import BScroll from 'better-scroll'
   import Loading from './loading'
   import Bubble from './bubble.vue'
-  import { getRect } from '../../utils/domUtils'
+  import { getRect } from '../../../utils/domUtils'
 
-  const COMPONENT_NAME = 'AirScroll'
   const DIRECTION_H = 'horizontal'
   const DIRECTION_V = 'vertical'
 
   export default {
-    name: COMPONENT_NAME,
+    name: 'AirScroll',
     props: {
-      data: {
-        type: Array,
-        default: function () {
-          return []
-        }
-      },
+      data: {},
       noRoot: {
         type: Boolean,
         default: false
@@ -127,8 +121,8 @@
     },
     computed: {
       pullUpTxt() {
-        const moreTxt = this.pullUpLoad && this.pullUpLoad.text && this.pullUpLoad.text.more || '加载更多'
-        const noMoreTxt = this.pullUpLoad && this.pullUpLoad.text && this.pullUpLoad.text.noMore || '没有更多数据'
+        const moreTxt = this.pullUpLoad && this.pullUpLoad.moreText || '加载更多'
+        const noMoreTxt = this.pullUpLoad && this.pullUpLoad.noMoreText || '没有更多数据'
         return this.pullUpDirty ? moreTxt : noMoreTxt
       },
       refreshTxt() {
@@ -290,35 +284,3 @@
   }
 
 </script>
-
-<style lang="less" scoped>
-  .scroll-wrapper{
-    width: 100%;
-    height: 100%;
-    /*position: relative;*/
-    overflow: hidden;
-
-    .scroll-content{
-      position: relative;
-      z-index: 10;
-    }
-    .pulldown-wrapper{
-      font-size: 12px;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all;
-    }
-    .pullup-wrapper{
-      font-size: 12px;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 16px 0;
-    }
-  }
-</style>

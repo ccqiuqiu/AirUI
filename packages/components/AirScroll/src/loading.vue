@@ -41,11 +41,3 @@
     }
   }
 </script>
-<style lang="less" scoped>
-  .loading-container{
-    svg{
-      width: 20px;
-      height: 20px;
-    }
-  }
-</style>

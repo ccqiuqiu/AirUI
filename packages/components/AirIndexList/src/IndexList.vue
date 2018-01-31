@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-  import Scroll from '../../common/Scroll'
+  import Scroll from '../../AirScroll'
   export default{
     name: 'AirIndexList',
     components: {Scroll},

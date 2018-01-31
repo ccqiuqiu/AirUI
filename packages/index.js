@@ -7,7 +7,7 @@ import AirLineMap from './components/AirLineMap'
 import {AirAccordion, AirAccordionContent} from './components/AirAccordion'
 import AirCalenderH from './components/AirCalenderH'
 import AirCalenderV from './components/AirCalenderV'
-import AirScroll from './components/common/Scroll'
+import AirScroll from './components/AirScroll'
 
 const components = [
   AirIndexSelect,

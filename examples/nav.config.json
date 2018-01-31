@@ -37,9 +37,9 @@
       "path": "/component",
       "items": [
         {
-          "desc": "待开发",
-          "name": "",
-          "path": "/"
+          "desc": "滚动组件",
+          "name": "scroll",
+          "path": "/scroll"
         }
       ]
     },
