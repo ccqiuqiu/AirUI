@@ -85,15 +85,15 @@
         default: DIRECTION_V
       },
       scrollbar: {
-        type: Boolean,
+        type: [Boolean, Object],
         default: true
       },
       pullDownRefresh: {
-        type: Boolean,
+        type: [Boolean, Object],
         default: false
       },
       pullUpLoad: {
-        type: Boolean,
+        type: [Boolean, Object],
         default: false
       },
       startY: {
@@ -121,7 +121,8 @@
         isPullUpLoad: false,
         pullUpDirty: true,
         pullDownStyle: '',
-        bubbleY: 0
+        bubbleY: 0,
+        loadError: false
       }
     },
     computed: {
@@ -131,7 +132,9 @@
         return this.pullUpDirty ? moreTxt : noMoreTxt
       },
       refreshTxt() {
-        return this.pullDownRefresh && this.pullDownRefresh.text || '刷新成功'
+        const text = this.pullDownRefresh && this.pullDownRefresh.text || '刷新成功'
+        const errText = this.pullDownRefresh && this.pullDownRefresh.errText || '刷新失败'
+        return this.loadError ? errText : text
       }
     },
     created() {
@@ -158,7 +161,7 @@
           scrollY: this.freeScroll || this.direction === DIRECTION_V,
           scrollX: this.freeScroll || this.direction === DIRECTION_H,
           scrollbar: this.scrollbar,
-          pullDownRefresh: this.pullDownRefresh,
+          pullDownRefresh: this.pullDownRefresh === true ? {stop: 50} : this.pullDownRefresh,
           pullUpLoad: this.pullUpLoad,
           startY: this.startY,
           freeScroll: this.freeScroll,
@@ -208,6 +211,7 @@
       forceUpdate(dirty) {
         if (this.pullDownRefresh && this.isPullingDown) {
           this.isPullingDown = false
+          this.loadError = !dirty
           this._reboundPullDown().then(() => {
             this._afterPullDown()
           })
@@ -287,34 +291,34 @@
 
 </script>
 
-<style>
+<style lang="less" scoped>
   .scroll-wrapper{
     width: 100%;
     height: 100%;
     /*position: relative;*/
     overflow: hidden;
-  }
 
-  .scroll-content{
-    position: relative;
-    z-index: 10;
-  }
-  .pulldown-wrapper{
-    font-size: 14px;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all;
-  }
-  .pullup-wrapper{
-    font-size: 14px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 0;
+    .scroll-content{
+      position: relative;
+      z-index: 10;
+    }
+    .pulldown-wrapper{
+      font-size: 12px;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all;
+    }
+    .pullup-wrapper{
+      font-size: 12px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px 0;
+    }
   }
 </style>
