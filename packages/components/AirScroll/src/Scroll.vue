@@ -38,6 +38,7 @@
 </template>
 
 <script>
+  import config from '../../../utils/config'
   import BScroll from 'better-scroll'
   import Loading from './loading'
   import Bubble from './bubble.vue'
@@ -137,9 +138,27 @@
     mounted() {
       setTimeout(() => {
         this.initScroll()
+        this.toKeepLocation()
       }, 20)
     },
+    activated () {
+      this.refresh()
+      this.toKeepLocation()
+    },
+    deactivated () {
+      // this.$route.meta.y = this.scroll.y
+      // this.disable()
+    },
     methods: {
+      toKeepLocation () {
+        if (this.scroll) {
+          let y = this.keepLocation && this.$route.meta && this.$route.meta.isBack && this.$route.meta.y || this.startY
+          this.$nextTick(() => this.scrollTo(0, y))
+        }
+      },
+      saveLocation (pos) {
+        this.$route.meta.y = pos.y
+      },
       initScroll() {
         if (!this.$refs.wrapper) {
           return
@@ -148,7 +167,6 @@
         if (this.$refs.listWrapper && (this.pullDownRefresh || this.pullUpLoad)) {
           this.$refs.listWrapper.style.minHeight = `${getRect(this.$refs.wrapper).height + 1}px`
         }
-
         let options = {
           probeType: this.probeType,
           click: this.click,
@@ -159,7 +177,7 @@
           pullUpLoad: this.pullUpLoad,
           startY: this.startY,
           freeScroll: this.freeScroll,
-          mouseWheel: this.mouseWheel
+          mouseWheel: config.mouseWheel || this.mouseWheel
         }
 
         this.scroll = new BScroll(this.$refs.wrapper, options)
@@ -168,6 +186,10 @@
           this.scroll.on('scroll', (pos) => {
             this.$emit('scroll', pos)
           })
+        }
+
+        if (this.keepLocation) {
+          this.scroll.on('scrollEnd', this.saveLocation)
         }
 
         if (this.listenBeforeScroll) {
@@ -236,6 +258,7 @@
           if (this.isRebounding) {
             this.pullDownStyle = `top:${10 - (this.pullDownRefresh.stop - pos.y)}px`
           }
+          this.$route.meta.y = pos.y
         })
       },
       _initPullUpLoad() {
@@ -267,18 +290,6 @@
       data() {
         this.$nextTick(() => this.forceUpdate(true))
       }
-    },
-    activated () {
-      if (this.scroll) {
-        // 只有当页面是后退，并且keepLocation为true的时候，才会恢复到上次滚动的位置，否则，滚动到顶部
-        if (!this.keepLocation || !this.$route.meta.isBack) {
-          this.y = 0
-        }
-        this.$nextTick(() => this.scrollTo(0, this.y))
-      }
-    },
-    deactivated () {
-      this.y = this.scroll.y
     },
     components: {Loading, Bubble}
   }

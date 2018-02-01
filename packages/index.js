@@ -1,6 +1,7 @@
 /**
  * Created by 熊超超(https://github.com/ccqiuqiu) on 2017/12/15.
  */
+import config from './utils/config'
 import AirIndexSelect from './components/AirIndexSelect'
 import AirIndexList from './components/AirIndexList'
 import AirLineMap from './components/AirLineMap'
@@ -20,8 +21,9 @@ const components = [
   AirScroll
 ]
 
-const install = function (Vue) {
+const install = function (Vue, options) {
   if (install.installed) return
+  config(options)
   components.map(component => Vue.component(component.name, component))
 }
 

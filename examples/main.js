@@ -6,7 +6,7 @@ import AirUI from '../packages/index.js'
 import '../packages/theme/css/index.css'
 
 Vue.component('demo-block', demoBlock)
-Vue.use(AirUI)
+Vue.use(AirUI, {mouseWheel: true})
 
 Vue.config.productionTip = false
 

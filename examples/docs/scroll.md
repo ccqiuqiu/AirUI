@@ -7,7 +7,7 @@
 > 使用air-scroll组件包裹需要滚动的容器即可
 
 <div class="demo-block demo-block-m" style="height: 100px">
-  <air-scroll mouseWheel>
+  <air-scroll>
     <div>1</div>
     <div>2</div>
     <div>3</div>
