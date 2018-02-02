@@ -64,13 +64,13 @@
         },
         {
           "desc": "横向日历",
-          "name": "calenderH",
-          "path": "/calenderH"
+          "name": "calendarH",
+          "path": "/calendarH"
         },
         {
           "desc": "纵向日历",
-          "name": "calenderV",
-          "path": "/calenderV"
+          "name": "calendarV",
+          "path": "/calendarV"
         }
       ]
     }

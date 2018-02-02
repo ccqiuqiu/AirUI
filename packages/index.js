@@ -6,8 +6,8 @@ import AirIndexSelect from './components/AirIndexSelect'
 import AirIndexList from './components/AirIndexList'
 import AirLineMap from './components/AirLineMap'
 import {AirAccordion, AirAccordionContent} from './components/AirAccordion'
-import AirCalenderH from './components/AirCalenderH'
-import AirCalenderV from './components/AirCalenderV'
+import AirCalendarH from './components/AirCalendarH'
+import AirCalendarV from './components/AirCalendarV'
 import AirScroll from './components/AirScroll'
 
 const components = [
@@ -16,8 +16,8 @@ const components = [
   AirLineMap,
   AirAccordion,
   AirAccordionContent,
-  AirCalenderH,
-  AirCalenderV,
+  AirCalendarH,
+  AirCalendarV,
   AirScroll
 ]
 

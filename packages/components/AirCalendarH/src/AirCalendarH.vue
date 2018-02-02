@@ -1,17 +1,17 @@
 <!--Created by 熊超超(https://github.com/ccqiuqiu) on 2018/1/22.-->
 <template>
-  <div class="air-calender-h">
-    <span class="air-calender-h--left" :class="{disable: disableLeft}" @click="pre"><slot name="left">&lt;</slot></span>
+  <div class="air-calendar-h">
+    <span class="air-calendar-h--left" :class="{disable: disableLeft}" @click="pre"><slot name="left">&lt;</slot></span>
     <div>
-      <div :style="transform" class="air-calender-h--wrap">
-        <div v-for="(item, i) in list" :key="i" class="air-calender-h--item" @click="clickItem(i)"
+      <div :style="transform" class="air-calendar-h--wrap">
+        <div v-for="(item, i) in list" :key="i" class="air-calendar-h--item" @click="clickItem(i)"
              :class="{disable: item.disable, pre: i < index, next: i > index }">
-          <div class="air-calender-h--y" v-if="i === index">{{item.y}}年</div>
-          <div class="air-calender-h--y" v-else>&nbsp;</div>
+          <div class="air-calendar-h--y" v-if="i === index">{{item.y}}年</div>
+          <div class="air-calendar-h--y" v-else>&nbsp;</div>
 
-          <div class="air-calender-h--con">
-            <div class="air-calender-h--con2">
-              <div class="air-calender-h--date">
+          <div class="air-calendar-h--con">
+            <div class="air-calendar-h--con2">
+              <div class="air-calendar-h--date">
                 <template v-if="i === index || !preText || !nextText">
                   <span>{{item.m}}-{{item.d}}</span>
                   <span>{{item.w}}</span>
@@ -20,19 +20,19 @@
                   <span>{{i < index ? preText : nextText}}</span>
                 </template>
               </div>
-              <div class="air-calender-h--data" v-if="item.text">{{currency + item.text}}</div>
-              <div class="air-calender-h--data" v-else>&nbsp;</div>
+              <div class="air-calendar-h--data" v-if="item.text">{{currency + item.text}}</div>
+              <div class="air-calendar-h--data" v-else>&nbsp;</div>
             </div>
-            <span class="air-calender-h--icon" v-if="$slots.icon"><slot name="icon" v-if="i === index"/></span>
+            <span class="air-calendar-h--icon" v-if="$slots.icon"><slot name="icon" v-if="i === index"/></span>
           </div>
 
         </div>
       </div>
 
-      <div class="air-calender-h--line"></div>
+      <div class="air-calendar-h--line"></div>
     </div>
 
-    <span class="air-calender-h--right" :class="{disable: disableRight}" @click="next"><slot name="right">&gt;</slot></span>
+    <span class="air-calendar-h--right" :class="{disable: disableRight}" @click="next"><slot name="right">&gt;</slot></span>
   </div>
 </template>
 <script>
@@ -43,7 +43,7 @@
   import throttle from '../../../utils/throttle'
 
   export default{
-    name: 'AirCalenderH',
+    name: 'AirCalendarH',
     props: {
       startDate: {
         type: Date,

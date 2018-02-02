@@ -1,28 +1,28 @@
 <!--Created by 熊超超(https://github.com/ccqiuqiu) on 2018/1/25.-->
 <template>
-  <div class="air-calender-v" :class="'air-calender-v__select'+select">
+  <div class="air-calendar-v" :class="'air-calendar-v__select'+select">
     <!--已选择日期-->
-    <div class="air-calender-v--header" v-if="double">
+    <div class="air-calendar-v--header" v-if="double">
        <div v-for="(text, i) in titles" :class="{active:select === i + 1}">
          <span class="text">{{text}}</span>
          <span>{{activeDate1.format}}</span>
        </div>
     </div>
     <!--星期-->
-    <div class="air-calender-v--week" :class="weekBg">
+    <div class="air-calendar-v--week" :class="weekBg">
       <span v-for="w in weeks">{{w}}</span>
     </div>
     <!--日历-->
-    <div class="air-calender-v--content">
-      <div class="air-calender-v--month" v-for="month in renderList" :key="month.m">
+    <div class="air-calendar-v--content">
+      <div class="air-calendar-v--month" v-for="month in renderList" :key="month.m">
 
-        <div class="air-calender-v--title">
+        <div class="air-calendar-v--title">
           <span>{{month.m}}</span>
           <span>月{{month.y}}年</span>
           <span class="price">{{month.lowPrice && currency + month.lowPrice + '+'}}</span>
         </div>
 
-        <div class="air-calender-v--days">
+        <div class="air-calendar-v--days">
           <span v-for="(date, index) in month.ds" :key="index" @click="clickDate(month, date)"
                 :class="{
                   disable:date.state === -1,
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div class="air-calender-v--btn" v-if="!double && activeDate1.date || isBefore" @click="selected">
+    <div class="air-calendar-v--btn" v-if="!double && activeDate1.date || isBefore" @click="selected">
       <slot name="btn">
         <div>{{btnText}}</div>
       </slot>
@@ -61,7 +61,7 @@
   import eachDayOfInterval from 'date-fns/esm/eachDayOfInterval'
 
   export default{
-    name: 'AirCalenderV',
+    name: 'AirCalendarV',
     props: {
       num: {
         type: Number,
@@ -73,7 +73,7 @@
       },
       weekBg: {
         type: String,
-        default: 'air-calender-v--wbg'
+        default: 'air-calendar-v--wbg'
       },
       date: String,
       date2: String,

@@ -1,4 +1,4 @@
-# AirCalenderH 横向日历
+# AircalendarH 横向日历
 ----
 
 > 纵向滚动的日历
@@ -6,12 +6,12 @@
 ### 基础用法
 
 <div class="demo-block-m">
-  <air-calender-v :data="data"></air-calender-v>
+  <air-calendar-v :data="data"></air-calendar-v>
 </div>
 
 ::: demo
 ```html
-  <air-calender-v :data="data"></air-calender-v>
+  <air-calendar-v :data="data"></air-calendar-v>
   <script>
     import addDays from 'date-fns/esm/addDays'
     import format from 'date-fns/esm/format'
@@ -37,12 +37,12 @@
 ### 指定初始值
 
 <div class="demo-block-m">
-  <air-calender-v :data="data" date="2018-02-28" btnText="确定选择"></air-calender-v>
+  <air-calendar-v :data="data" date="2018-02-28" btnText="确定选择"></air-calendar-v>
 </div>
 
 ::: demo
 ```html
-  <air-calender-v :data="data" date="2018-02-28" ></air-calender-v>
+  <air-calendar-v :data="data" date="2018-02-28" ></air-calendar-v>
   <script>
     import addDays from 'date-fns/esm/addDays'
     import format from 'date-fns/esm/format'
@@ -69,12 +69,12 @@
 ### 往返日期
 
 <div class="demo-block-m">
-  <air-calender-v :data="data" :data2="data2" double></air-calender-v>
+  <air-calendar-v :data="data" :data2="data2" double></air-calendar-v>
 </div>
 
 ::: demo
 ```html
-  <air-calender-v :data="data" :data2="data2" double></air-calender-v>
+  <air-calendar-v :data="data" :data2="data2" double></air-calendar-v>
   <script>
     import addDays from 'date-fns/esm/addDays'
     import format from 'date-fns/esm/format'
