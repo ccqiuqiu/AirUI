@@ -1,0 +1,31 @@
+/**
+ * Created by 熊超超(https://github.com/ccqiuqiu) on 2018/02/02.
+ */
+.air-data-block {
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  >div{
+    position: absolute;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+  &--loading{
+    display: flex;
+    align-items: center;
+
+    &__icon{
+      margin-right: 10px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+}

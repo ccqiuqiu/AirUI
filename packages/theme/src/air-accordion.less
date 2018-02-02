@@ -22,11 +22,7 @@
     outline: none;
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
 
-    &__header .icon{
-      color: rgba(0,0,0,0.54);
-    }
-
-    .header__icon{
+    .arrow-icon{
       margin-left: auto;
       margin-right: 16px;
       transition: all 0.3s;
@@ -47,11 +43,11 @@
     //padding: 12px 24px;
   }
 
-  &__container--active > &__header .header__icon{
+  &__container--active .arrow-icon{
     transform: rotate(-180deg);
   }
 
-  &__header > *:not(.header__icon) {
+  &__header > *:not(.arrow-icon) {
     flex: 1 1 auto;
   }
 

@@ -39,7 +39,7 @@ export default {
     },
     genIcon(h) {
       return this.$slots.icon ? this.$createElement('div', {
-        staticClass: 'header__icon'
+        staticClass: 'arrow-icon'
       }, [this.$slots.icon]) : null
     },
     toggle(uid) {

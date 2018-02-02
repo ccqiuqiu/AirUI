@@ -9,6 +9,7 @@ import {AirAccordion, AirAccordionContent} from './components/AirAccordion'
 import AirCalendarH from './components/AirCalendarH'
 import AirCalendarV from './components/AirCalendarV'
 import AirScroll from './components/AirScroll'
+import AirDataBlock from './components/AirDataBlock'
 
 const components = [
   AirIndexSelect,
@@ -18,7 +19,8 @@ const components = [
   AirAccordionContent,
   AirCalendarH,
   AirCalendarV,
-  AirScroll
+  AirScroll,
+  AirDataBlock
 ]
 
 const install = function (Vue, options) {

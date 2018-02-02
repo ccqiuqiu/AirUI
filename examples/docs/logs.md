@@ -1,7 +1,8 @@
 # 更新日志
 ----
 
-* 2018/01/23 `v0.2.1` 增加better-scroll版本的索引选择器indexList
+* 2018/01/23 `v0.3.22` 增加AirDataBlock组件
+* 2018/01/23 `v0.2.1` 增加better-scroll版本的索引选择器AirIndexList
 * 2018/01/23 `v0.2.0` 增加纵向日历组件AirCalenderV
 * 2018/01/23 `v0.1.11` 增加横向日历组件AirCalenderH
 * 2018/01/18 `v0.1.8` 增加可折叠组件

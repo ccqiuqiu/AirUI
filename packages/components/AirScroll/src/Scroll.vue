@@ -40,7 +40,7 @@
 <script>
   import config from '../../../utils/config'
   import BScroll from 'better-scroll'
-  import Loading from './loading'
+  import Loading from '../../common/loading'
   import Bubble from './bubble.vue'
   import { getRect } from '../../../utils/domUtils'
 

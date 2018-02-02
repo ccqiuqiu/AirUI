@@ -71,6 +71,11 @@
           "desc": "纵向日历",
           "name": "calendarV",
           "path": "/calendarV"
+        },
+        {
+        "desc": "数据加载",
+        "name": "dataBlock",
+        "path": "/dataBlock"
         }
       ]
     }
