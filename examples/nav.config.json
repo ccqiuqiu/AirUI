@@ -76,6 +76,11 @@
         "desc": "数据加载",
         "name": "dataBlock",
         "path": "/dataBlock"
+        },
+        {
+          "desc": "滑动操作",
+          "name": "slideAction",
+          "path": "/slideAction"
         }
       ]
     }

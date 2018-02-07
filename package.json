@@ -1,6 +1,6 @@
 {
   "name": "airui",
-  "version": "0.3.22",
+  "version": "0.3.25",
   "description": "airui-vue",
   "author": "ccqiuqiu",
   "main": "packages/index.js",
@@ -38,6 +38,7 @@
     "vue": "^2.5.2",
     "vue-markdown-loader": "^2.2.3",
     "vue-router": "^3.0.1",
+    "vue-touch": "^2.0.0-beta.4",
     "zrender": "^3.7.4"
   },
   "devDependencies": {

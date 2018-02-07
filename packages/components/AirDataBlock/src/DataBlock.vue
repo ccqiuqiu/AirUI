@@ -83,20 +83,4 @@
 </script>
 
 <style lang="less" scoped>
-  .air-data-block {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    >div{
-      position: absolute;
-    }
-    .fade-enter-active, .fade-leave-active {
-      transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-      opacity: 0;
-    }
-  }
 </style>

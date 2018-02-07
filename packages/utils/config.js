@@ -2,7 +2,7 @@
  * Created by 熊超超(https://github.com/ccqiuqiu) on 2018/2/1.
  */
 function config (options) {
-  merge(config, options)
+  options && merge(config, options)
 }
 
 merge(config, {

@@ -1,6 +1,7 @@
 # 更新日志
 ----
 
+* 2018/01/23 `v0.3.25` 增加AirSlideAction左右滑动操作组件
 * 2018/01/23 `v0.3.22` 增加AirDataBlock组件
 * 2018/01/23 `v0.2.1` 增加better-scroll版本的索引选择器AirIndexList
 * 2018/01/23 `v0.2.0` 增加纵向日历组件AirCalenderV
