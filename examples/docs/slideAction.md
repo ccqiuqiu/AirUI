@@ -3,7 +3,8 @@
 
 > 滑动操作组件,左右滑动容器可以显示操作按钮
 
-### 基础用法 左右都可以拖动
+### 基础用法
+> 左右都可以拖动, 通过slot控制是否开启左滑和优化
 <div class="demo-block">
   <air-slide-action v-model="model">
     <span slot="left" class="left">左边左边</span>
@@ -53,59 +54,14 @@
 ```
 :::
 
-### 只能往左拖动
-<div class="demo-block">
-  <air-slide-action>
-    <div>
-      <p>内容内容</p>
-      <p>我只能往左拖动ooooo</p>
-    </div>
-    <span slot="right" class="right">右边右边右边</span>
-  </air-slide-action>
-</div>
-
-::: demo
-```html
-<air-slide-action v-model="model2">
-  <div>
-    <p>内容内容</p>
-    <p>我只能往左拖动ooooo</p>
-  </div>
-  <span slot="right" class="right">右边右边右边</span>
-</air-slide-action>
-
-<script>
-  export default {
-    data () {
-      return {
-        model2: 0
-      }
-    }
-  }
-</script>
-
-<style>
-  .left{
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    padding: 0 5px;
-  }
-  .right{
-    background-color: #f44336;
-  }
-</style>
-```
-:::
-
 ### 列表
 > 通过AirActionGroup组件包裹多个AirSlideAction组件，可实现滑动的时候自动关闭上一个
 <div class="demo-block">
   <air-slide-action-group :index="index">
     <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
       <div>
-        <p>内容内容</p>
-        <p>我只能往左拖动ooooo</p>
+        <p>内容内容{{index}}</p>
+        <p>我只能往左拖动ooo</p>
       </div>
       <span slot="right" class="right">右边右边右边</span>
     </air-slide-action>
@@ -117,7 +73,7 @@
   <air-slide-action-group :index="index">
     <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
       <div>
-        <p>内容内容</p>
+        <p>内容内容{{index}}</p>
         <p>我只能往左拖动ooooo</p>
       </div>
       <span slot="right" class="right">右边右边右边</span>
