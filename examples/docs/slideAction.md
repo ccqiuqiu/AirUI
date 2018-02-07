@@ -98,12 +98,73 @@
 ```
 :::
 
+### 列表
+> 通过AirActionGroup组件包裹多个AirSlideAction组件，可实现滑动的时候自动关闭上一个
+<div class="demo-block">
+  <air-slide-action-group :index="index">
+    <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
+      <div>
+        <p>内容内容</p>
+        <p>我只能往左拖动ooooo</p>
+      </div>
+      <span slot="right" class="right">右边右边右边</span>
+    </air-slide-action>
+  <air-slide-action-group>
+</div>
+
+::: demo
+```html
+  <air-slide-action-group :index="index">
+    <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
+      <div>
+        <p>内容内容</p>
+        <p>我只能往左拖动ooooo</p>
+      </div>
+      <span slot="right" class="right">右边右边右边</span>
+    </air-slide-action>
+  <air-slide-action-group>
+
+<script>
+  export default {
+    data () {
+      return {
+        index: -1
+      }
+    },
+    methods: {
+      slideStart(i) {
+        this.index = i
+      }
+    }
+  }
+</script>
+
+<style>
+  .left{
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+  }
+  .right{
+    background-color: #f44336;
+  }
+</style>
+```
+:::
+
 <script>
   export default {
     data () {
       return {
         model: 0,
-        model2: 0
+        model2: 0,
+        index: -1
+      }
+    },
+    methods: {
+      slideStart(i) {
+        this.index = i
       }
     }
   }
@@ -135,5 +196,13 @@
 |left|左边滑出的的内容，为空则不能右滑|
 |right|右边滑出的的内容，为空则不能左滑|
 |-|默认内容|
+
+
+### 事件
+|事件名|描述|返回值类型|说明|
+|----|----|-------------|---|
+|slide-start|滑动开始时触发|-|-|
+|slide-end|滑动结束时触发|Number|返回组件的状态（0-默认，1-左边滑出，-1右边滑出）|
+
 
 

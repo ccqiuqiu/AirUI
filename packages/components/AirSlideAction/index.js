@@ -1,12 +1,15 @@
 /**
  * Created by 熊超超(https://github.com/ccqiuqiu) on 2018/02/07.
  */
-import SlideAction from './src/SlideAction.vue'
+import AirSlideAction from './src/SlideAction.vue'
+import AirSlideActionGroup from './src/SlideActionGroup.vue'
 const VueTouch = require('vue-touch')
 
-SlideAction.install = function (Vue) {
+AirSlideAction.install = function (Vue) {
   Vue.use(VueTouch)
-  Vue.component(SlideAction.name, SlideAction)
+  Vue.component(AirSlideActionGroup.name, AirSlideActionGroup)
+  Vue.component(AirSlideAction.name, AirSlideAction)
 }
 
-export default SlideAction
+export default AirSlideAction
+export {AirSlideActionGroup, AirSlideAction}

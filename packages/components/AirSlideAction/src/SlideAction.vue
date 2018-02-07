@@ -79,7 +79,8 @@
     methods: {
       // 移动开始
       onPanStart(e) {
-        this.$emit('slide-start')
+        e.direction === 4 && this.$refs.left && this.$emit('slide-start')
+        e.direction === 2 && this.$refs.right && this.$emit('slide-start')
       },
       // 移动中，计算偏移值
       onPanMove(e){
@@ -105,6 +106,10 @@
         }
         this.preOffset = this.deltaX
         this.$emit('slide-end', this.status)
+      },
+      reset() {
+        this.status = 0
+        this.preOffset = -this.leftWidth
       }
     }
   }

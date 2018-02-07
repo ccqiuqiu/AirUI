@@ -144,5 +144,5 @@
 ### 事件
 |事件名|描述|返回值类型|说明|
 |----|----|-------------|---|
-|selected|按确定按钮触发|Object|Array|double为false时返回一个对象，为true返回包含2个对象的数组|
+|selected|按确定按钮触发|Object/Array|double为false时返回一个对象，为true返回包含2个对象的数组|
 

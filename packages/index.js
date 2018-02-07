@@ -11,7 +11,7 @@ import AirCalendarH from './components/AirCalendarH'
 import AirCalendarV from './components/AirCalendarV'
 import AirScroll from './components/AirScroll'
 import AirDataBlock from './components/AirDataBlock'
-import AirSlideAction from './components/AirSlideAction'
+import {AirSlideActionGroup, AirSlideAction} from './components/AirSlideAction'
 
 const components = [
   AirIndexSelect,
@@ -23,7 +23,8 @@ const components = [
   AirCalendarV,
   AirScroll,
   AirDataBlock,
-  AirSlideAction
+  AirSlideAction,
+  AirSlideActionGroup
 ]
 
 const install = function (Vue, options) {
