@@ -26,8 +26,13 @@
           </dd>
         </dl>
       </div>
+      <div class="air-index-select__title" v-show="active !== '热'">{{active}}</div>
     </div>
-    <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}]">
+    <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}]"
+         @touchstart.stop.prevent="touchstart"
+         @touchmove.stop.prevent="touchmove"
+         @touchend.stop.prevent="touchend"
+    >
       <template v-for="char in index">
         <span class="air-index-select__char air-index-select__char--active" v-if="char === active" :style={color:activeColor} @click="clickChar(char)">{{char}}</span>
         <span class="air-index-select__char" v-else @click="clickChar(char)">{{char}}</span>
@@ -71,15 +76,15 @@
     },
     data () {
       return {
-        index: [...'热ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
         tip: '', // 提示文字
         active: '热', // index上面激活的文字
-        topDom: null,
         contentDom: null,
+        titleDom: null,
         showTip: false,
         titleOffsetTops: [],
         keyword: '',
-        tabIndex: 0
+        tabIndex: 0,
+        offset: 0 // 下一个标题距离顶部位置
       }
     },
     created () {
@@ -87,6 +92,9 @@
       this.sortedData()
     },
     computed: {
+      index () {
+        return ['热', ...Object.keys(this.listData)]
+      },
       tabFilterData () {
         if (this.tabs) {
           return this.data[this.tabIndex]
@@ -122,10 +130,9 @@
       }
     },
     mounted () {
-      this.topDom = this.$el.querySelector('.air-index-select__top')
       this.contentDom = this.$el.querySelector('.air-index-select__content')
-      this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map(dt => ({char: dt.innerText, y: dt.offsetTop}))
-      this.bindEvent()
+      this.titleDom = this.$el.querySelector('.air-index-select__title')
+      // this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map(dt => ({char: dt.innerText, y: dt.offsetTop - this.contentDom.offsetTop}))
     },
     methods: {
       sortedData () {
@@ -149,39 +156,44 @@
         })
       },
       // 绑定索引条触摸事件
-      bindEvent () {
-        const indexBar = this.$el.querySelector('.air-index-select__index')
-        let findStart = e => {
-          const point = e.changedTouches ? e.changedTouches[0] : e
-          const pointElement = document.elementFromPoint(point.pageX, point.pageY)
-          if (pointElement) {
-            let char = pointElement.innerText
+      touchstart(e) {
+        this.moveIndex(e)
+      },
+      touchmove(e) {
+        this.moveIndex(e)
+      },
+      touchend() {
+        this.showTip = false
+      },
+      moveIndex(e) {
+        const point = e.changedTouches ? e.changedTouches[0] : e
+        // 找到点击的dom
+        const pointElement = document.elementFromPoint(point.pageX, point.pageY)
+        if (pointElement) {
+          let char = pointElement.innerText
+          if (this.index.includes(char)) {
             const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
             if (char && titleDom && char.length === 1) {
               this.clickChar(char)
               this.showTip = true
             }
           }
-          e.preventDefault()
         }
-        let findEnd = () => {
-          this.showTip = false
-        }
-        indexBar.addEventListener('touchstart', e => findStart(e))
-        indexBar.addEventListener('touchmove', e => findStart(e))
-        indexBar.addEventListener('touchend', e => findEnd(e))
       },
       clickChar (char) {
         this.tip = char
         this.active = char
       },
       scroll () {
-        const dts = this.titleOffsetTops.filter(dt => dt.y - this.contentDom.scrollTop <= this.topDom.clientHeight)
+        const dts = this.titleOffsetTops.filter(dt => dt.y - this.contentDom.scrollTop <= this.contentDom.offsetTop)
         if (dts && dts.length > 0) {
-          // this.tip = dts[dts.length - 1].char.charAt(0)
           this.active = dts[dts.length - 1].char.charAt(0)
         }
-        // todo 滚动的时候动态将分组标题置顶
+        // 下一个标题距离顶部的位置
+        const offset = this.titleOffsetTops[(dts.length)] ?
+          this.titleOffsetTops[(dts.length)].y - this.contentDom.scrollTop - this.contentDom.offsetTop : 26
+        // 这个值只能在0-26之间才触发位移  26为title的高
+        this.offset = Math.min(Math.max(0, offset), 26) - 26
       },
       clickItem (item) {
         this.$emit('on-selected', item)
@@ -191,7 +203,12 @@
       tip (char) {
         const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
         if (titleDom) {
-          this.contentDom.scrollTop = titleDom.offsetTop - this.topDom.clientHeight
+          this.contentDom.scrollTop = titleDom.offsetTop
+        }
+      },
+      offset(val, oldVal) {
+        if (val !== oldVal) {
+          this.titleDom.style.transform = `translate3d(0, ${val}px, 0)`
         }
       }
     }

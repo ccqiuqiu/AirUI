@@ -75,7 +75,7 @@
   &__char {
     width: 26px;
     font-size: 12px;
-    flex: 1 1 ~"calc(100% / 27)";
+    flex: 1 1 0;
     text-align: center;
     //overflow: hidden;
 
@@ -85,6 +85,7 @@
     }
   }
   &__tip {
+    z-index: 100;
     color: #ffffff;
     background-color: #3f536e;
     height: 40px;
@@ -100,7 +101,9 @@
   &__dl {
     > dt {
       background-color: #EEEEEE;
-      padding: 3px 5px;
+      line-height: 26px;
+      height: 26px;
+      padding-left: 6px;
     }
     > dd {
       font-size: 20px;
@@ -112,10 +115,10 @@
   }
   &__key-hot {
     > dt {
-      margin-top: 10px;
       background-color: transparent;
       font-size: 16px;
       padding: 3px 5px;
+      padding-top: 10px;
     }
     > dd {
       margin-right: 26px;
@@ -133,6 +136,16 @@
   &__sub-text {
     font-size: 14px;
     color: #AAA;
+  }
+  &__title{
+    padding-left: 6px;
+    position: absolute;
+    background-color: #EEEEEE;
+    min-height: 0!important;
+    height: 26px;
+    line-height: 26px;
+    z-index: 11;
+    width: ~"calc(100% - 6px)";
   }
 
   &.scroll &__content{
