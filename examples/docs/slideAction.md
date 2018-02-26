@@ -57,8 +57,8 @@
 ### 列表
 > 通过AirActionGroup组件包裹多个AirSlideAction组件，可实现滑动的时候自动关闭上一个
 <div class="demo-block">
-  <air-slide-action-group :index="index">
-    <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
+  <air-slide-action-group>
+    <air-slide-action v-for="(item, index) in 5" :key="index">
       <div>
         <p>内容内容{{index}}</p>
         <p>我只能往左拖动ooo</p>
@@ -70,8 +70,8 @@
 
 ::: demo
 ```html
-  <air-slide-action-group :index="index">
-    <air-slide-action @slide-start="slideStart(index)" v-for="(item, index) in 5" :key="index">
+  <air-slide-action-group>
+    <air-slide-action v-for="(item, index) in 5" :key="index">
       <div>
         <p>内容内容{{index}}</p>
         <p>我只能往左拖动ooooo</p>
@@ -79,21 +79,6 @@
       <span slot="right" class="right">右边右边右边</span>
     </air-slide-action>
   <air-slide-action-group>
-
-<script>
-  export default {
-    data () {
-      return {
-        index: -1
-      }
-    },
-    methods: {
-      slideStart(i) {
-        this.index = i
-      }
-    }
-  }
-</script>
 
 <style>
   .left{
@@ -113,14 +98,7 @@
   export default {
     data () {
       return {
-        model: 0,
-        model2: 0,
-        index: -1
-      }
-    },
-    methods: {
-      slideStart(i) {
-        this.index = i
+        model: 0
       }
     }
   }

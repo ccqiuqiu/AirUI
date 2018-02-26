@@ -79,8 +79,11 @@
     methods: {
       // 移动开始
       onPanStart(e) {
-        e.direction === 4 && this.$refs.left && this.$emit('slide-start')
-        e.direction === 2 && this.$refs.right && this.$emit('slide-start')
+        if (this.status === 0) {
+          this.$parent.$emit('slide-start')
+          // e.direction === 4 && this.$refs.left && this.$parent.$emit('slide-start')
+          // e.direction === 2 && this.$refs.right && this.$parent.$emit('slide-start')
+        }
       },
       // 移动中，计算偏移值
       onPanMove(e){

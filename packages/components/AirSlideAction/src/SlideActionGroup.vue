@@ -1,6 +1,6 @@
 <!--Created by 熊超超 on 2018/2/7.-->
 <template>
-  <div>
+  <div tabindex=-1 @blur="reset" class="air-slide-action-group">
     <slot></slot>
   </div>
 </template>
@@ -8,17 +8,13 @@
 <script>
   export default {
     name: 'AirSlideActionGroup',
-    props: {
-      index: {
-        type: Number,
-        default: -1
-      }
+    created () {
+      this.$on('slide-start', () => this.reset())
     },
-    watch: {
-      index(val) {
-        this.$children.forEach((c, index) => index !== val && c.reset && c.reset())
+    methods: {
+      reset() {
+        this.$children.forEach((c) => c.reset && c.reset())
       }
-    },
-    methods: {}
+    }
   }
 </script>
