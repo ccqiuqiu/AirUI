@@ -30,7 +30,7 @@ export default {
       return this.$createElement('div', {
         staticClass: 'air-accordion__header',
         on: {
-          click: () => this.panelClick(this._uid)
+          click: () => this.panelClick(this._uid, !this.isActive)
         }
       }, [
         this.$slots.header,
@@ -42,9 +42,11 @@ export default {
         staticClass: 'arrow-icon'
       }, [this.$slots.icon]) : null
     },
-    toggle(uid) {
+    toggle(uid = this._uid) {
       const isActive = this._uid === uid && !this.isActive
-      if (isActive) this.isBooted = true
+      if (isActive) {
+        this.isBooted = true
+      }
       this.$nextTick(() => (this.isActive = isActive))
     }
   },

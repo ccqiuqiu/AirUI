@@ -1,6 +1,6 @@
 {
   "name": "airui",
-  "version": "0.3.33",
+  "version": "0.3.34",
   "description": "airui-vue",
   "author": "ccqiuqiu",
   "main": "packages/index.js",
