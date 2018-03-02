@@ -179,7 +179,7 @@
 |属性名|类型|描述|必须|默认|
 |----|----|-------------|----|--------|
 |expand|Boolean|是否能展开多个item|-|false|
-|value|[Number, Array]|通过v-model绑定的值，当前展开的item的索引, 当expand为false时，类型为Number，否则为Array|-|-|
+|value|[Number, Array]|当前展开的item的索引，通过v-model绑定, 当expand为false时，类型为Number，否则为Array|-|-|
 |focusable|Boolean|使面板可聚焦|-|false|
 |inset|Boolean|展开的面板使用inset样式|-|false|
 |popout|Boolean|展开的面板使用popout样式|-|false|

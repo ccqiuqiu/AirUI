@@ -193,9 +193,11 @@
           this.active = dts[dts.length - 1].char.charAt(0)
         }
         // 下一个标题距离顶部的位置
-        const offset = this.titleOffsetTops[(dts.length)] ? this.titleOffsetTops[(dts.length)].y - y : 26
+        const h = Math.floor(this.titleDom.clientHeight)
+        const offset = this.titleOffsetTops[(dts.length)] ? this.titleOffsetTops[(dts.length)].y - y : h
         // 这个值只能在0-26之间才触发位移  26为title的高
-        this.offset = Math.min(Math.max(0, offset), 26) - 26
+        // +1像素是为了解决在以rem为单位的项目可能因为精度问题导致新旧标题间的间隙
+        this.offset = Math.min(Math.max(0, offset), h) - h + 1
       },
       clickItem (item) {
         this.$emit('on-selected', item)
