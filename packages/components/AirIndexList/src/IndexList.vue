@@ -2,8 +2,11 @@
 <template>
   <div class="air-index-select scroll">
     <div class="air-index-select__top">
-      <div class="air-index-select__search">
-        <input type="text" :placeholder="searchHit" v-model.trim="keyword" />
+      <div class="air-index-select__search" :class="searchClass">
+        <div>
+          <slot name="icon"></slot>
+          <input type="text" :placeholder="searchHit" v-model.trim="keyword" />
+        </div>
       </div>
       <div class="air-index-select__tab" v-if="tabs">
         <span @click="tabIndex=index" v-for="(tab, index) in tabs"
@@ -12,8 +15,20 @@
     </div>
     <div class="air-index-select__content">
       <scroll class="air-index-select__list" ref="scroll" noRoot listenScroll @scroll="scroll" :probeType="2" :scrollbar="false">
-        <dl :class="['air-index-select__dl', 'air-index-select__key-hot']" v-show="!keyword">
-          <dt>热门</dt>
+        <!--历史-->
+        <dl :class="['air-index-select__dl', 'air-index-select__key-his', hisClass]" v-show="!keyword" v-if="hisText">
+          <dt>
+            <slot name="his">历史</slot>
+          </dt>
+          <dd>
+            <span v-for="item in hisData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
+          </dd>
+        </dl>
+        <!--热门-->
+        <dl :class="['air-index-select__dl', 'air-index-select__key-hot', hotClass]" v-show="!keyword">
+          <dt>
+            <slot name="hot">热门</slot>
+          </dt>
           <dd>
             <span v-for="item in hotData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
           </dd>
@@ -21,18 +36,19 @@
         <dl v-for="(value, key) in listData" :key="key" :class="['air-index-select__dl', 'air-index-select__key-'+key]">
           <dt>{{key}}</dt>
           <dd v-for="item in value" :key="item[keyField]" @click="clickItem(item)">
-            <span class="air-index-select__text">{{item[textField]}}</span>
-            <span class="air-index-select__sub-text">{{item[subTextField]}}</span>
+            <slot :item="item">
+              <span class="air-index-select__text">{{item[textField]}}</span>
+              <span class="air-index-select__sub-text">{{item[subTextField]}}</span>
+            </slot>
           </dd>
         </dl>
       </scroll>
-      <div class="air-index-select__title" v-show="active !== '热'">{{active}}</div>
+      <div class="air-index-select__title" v-show="/[A-Z]/.test(active) && fixTitle">{{active}}</div>
     </div>
-    <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}]"
+    <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}, indexClass]" v-show="!keyword"
          @touchstart.stop.prevent="touchstart"
          @touchmove.stop.prevent="touchmove"
-         @touchend.stop.prevent="touchend"
-    >
+         @touchend.stop.prevent="touchend">
       <template v-for="char in index">
         <span class="air-index-select__char air-index-select__char--active" v-if="char === active" :style={color:activeColor} @click="clickChar(char)">{{char}}</span>
         <span class="air-index-select__char" v-else @click="clickChar(char)">{{char}}</span>
@@ -52,6 +68,7 @@
         required: true
       },
       hots: Array,
+      histories: Array,
       textField: {
         type: String,
         required: true
@@ -74,12 +91,28 @@
         type: Array,
         default: () => ([])
       },
-      tabs: Array
+      tabs: Array,
+      hotText: {
+        type: String,
+        default: '热'
+      },
+      hisText: {
+        type: String,
+        default: ''
+      },
+      searchClass: String,
+      hotClass: String,
+      indexClass: String,
+      hisClass: String,
+      fixTitle: {
+        type: Boolean,
+        default: true
+      }
     },
     data () {
       return {
         tip: '', // 提示文字
-        active: '热', // index上面激活的文字
+        active: this.hisText || this.hotText, // index上面激活的文字
         titleDom: null,
         contentDom: null,
         showTip: false,
@@ -95,7 +128,9 @@
     },
     computed: {
       index () {
-        return ['热', ...Object.keys(this.listData)]
+        const arr = [this.hotText, ...Object.keys(this.listData)]
+        this.hisText && arr.unshift(this.hisText)
+        return arr
       },
       tabFilterData () {
         if (this.tabs) {
@@ -106,7 +141,15 @@
       },
       hotData () {
         if (this.hots && this.hots.length > 0) {
-          return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
+          // return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
+          return this.hots.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
+        }
+        return []
+      },
+      hisData () {
+        if (this.histories && this.histories.length > 0) {
+          // return this.tabFilterData.filter(item => this.histories.includes(item[this.keyField]))
+          return this.histories.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
         }
         return []
       },
@@ -126,7 +169,21 @@
           temp[key].push(item)
         })
         this.$nextTick(() => {
-          this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map(dt => ({char: dt.innerText, y: dt.offsetTop}))
+          this.titleOffsetTops = Array.from(this.$el.querySelectorAll('dt')).map((dt, index) => {
+            let text = dt.innerText
+            if (this.hisText) {
+              if (index === 0) {
+                text = this.hisText
+              } else if (index === 1) {
+                text = this.hotText
+              }
+            } else {
+              if (index === 0) {
+                text = this.hotText
+              }
+            }
+            return {char: text, y: dt.offsetTop}
+          })
         })
         return temp
       }
@@ -174,12 +231,21 @@
         if (pointElement) {
           let char = pointElement.innerText
           if (this.index.includes(char)) {
-            const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
-            if (char && titleDom && char.length === 1) {
+            const titleDom = this.$el.querySelector('.air-index-select__key-' + this.getChar(char))
+            if (char && titleDom) {
               this.clickChar(char)
               this.showTip = true
             }
           }
+        }
+      },
+      getChar(char) {
+        if (char === this.hotText) {
+          return 'hot'
+        } else if (char === '历史') {
+          return 'his'
+        } else {
+          return char
         }
       },
       clickChar (char) {
@@ -190,14 +256,14 @@
         y = Math.abs(Math.min(y, 0))
         const dts = this.titleOffsetTops.filter(dt => dt.y - y <= 0)
         if (dts && dts.length > 0) {
-          this.active = dts[dts.length - 1].char.charAt(0)
+          this.active = dts[dts.length - 1].char
         }
         // 下一个标题距离顶部的位置
         const h = Math.floor(this.titleDom.clientHeight)
         const offset = this.titleOffsetTops[(dts.length)] ? this.titleOffsetTops[(dts.length)].y - y : h
         // 这个值只能在0-26之间才触发位移  26为title的高
-        // +1像素是为了解决在以rem为单位的项目可能因为精度问题导致新旧标题间的间隙
-        this.offset = Math.min(Math.max(0, offset), h) - h + 1
+        // -1像素是为了解决在以rem为单位的项目可能因为精度问题导致新旧标题间的间隙
+        this.offset = Math.min(Math.max(0, offset), h) - h - 1
       },
       clickItem (item) {
         this.$emit('on-selected', item)
@@ -205,7 +271,7 @@
     },
     watch: {
       tip (char) {
-        const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
+        const titleDom = this.$el.querySelector('.air-index-select__key-' + this.getChar(char))
         if (titleDom) {
           this.$refs.scroll.scrollToElement(titleDom, 0)
         }
