@@ -67,8 +67,8 @@
     },
     data() {
       return {
+        zzIconL: {},
         dpr: 1,
-        airPortLocations: this.codes.map(code => airPortLocation.find(l => l.airport === code)).filter(l => !!l),
         zr: null, // 画布实例
         timeStop: 1000,
         time: 5000,
@@ -91,6 +91,11 @@
         this.dpr = dpr
       }
     },
+    computed: {
+      airPortLocations() {
+        return this.codes.map(code => airPortLocation.find(l => l.airport === code)).filter(l => !!l)
+      }
+    },
     mounted () {
       // 根据dpr缩放地图上的元素
       const dotR = this.dotR * this.dpr
@@ -106,98 +111,7 @@
       utils.init(china, width, height)
       // 画中国地图
       utils.drawChinaMap(zrender, this.zr, {fill: this.mapFill, stroke: this.mapStroke})
-      // 画航线
-      this.airPortLocations.forEach((a, index, arr) => {
-        // 将经纬度转为画布上的坐标
-        const p = utils.convert(a.location.map(n => Number(n)))
-        // 画机场的点 // 中转机场画中转图标
-        if (index === 0 || index === arr.length - 1) {
-          this.zr.add(new zrender.Circle({
-            shape: {
-              cx: p[0],
-              cy: p[1],
-              r: dotR
-            },
-            style: {
-              fill: this.dotFill,
-              text: a.city,
-              fontSize: fontSize,
-              textPosition: 'right',
-              shadowColor: this.dotFill,
-              shadowBlur: dotShadowBlur
-            },
-            z: this.dotZ
-          }))
-        } else {
-          const zzIcon = zrender.path.createFromString(this.zzSvg, {
-            style: {
-              fill: this.dotFill,
-              text: a.city,
-              fontSize: fontSize,
-              textPosition: 'right'
-            },
-            z: this.dotZ
-          })
-          // 缩放
-          const size = dotR * 2
-          zzIcon.attr('scale', [size / 1024, size / 1024])
-          zzIcon.attr('position', [p[0] - size / 2 , p[1] - size / 2])
-          this.zr.add(zzIcon)
-        }
-        // 每2点间画线
-        if (index < arr.length - 1) {
-          const p2 = utils.convert(arr[index + 1].location.map(n => Number(n)))
-          this.zr.add(new zrender.Line({
-            shape: {
-              x1: p[0],
-              y1: p[1],
-              x2: p2[0],
-              y2: p2[1]
-            },
-            style: {
-              stroke:  this.lineStroke
-            },
-            z: this.lineZ
-          }))
-          // 画飞机图标
-          // 通过svg图新建一个path
-          const air = zrender.path.createFromString(this.airSvg, {style: {fill: this.iconFill}, z: this.iconZ})
-          // 缩放
-          air.attr('scale', [iconSize / 1024, iconSize / 1024])
-          // 航线角度
-          const angle = utils.angle(p, p2, 90)
-          // 根据航线方向旋转图标，让飞机头始终向着航向方向
-          air.attr('rotation', Math.PI/180 * (angle))
-          // 计算偏移
-          let out = zrender.matrix.create()
-          zrender.matrix.rotate(out, [iconSize / 2, iconSize / 2], Math.PI/180 * (angle))
-          // 计算图标的起点和终点
-          const startPoint = [p[0] - iconSize / 2 + (iconSize / 2 - out[0]), p[1] - iconSize / 2 + (iconSize / 2 - out[1])]
-          const endPoint = [p2[0] - iconSize / 2 + (iconSize / 2 - out[0]), p2[1] - iconSize / 2 + (iconSize / 2 - out[1])]
-          // air.attr('position', [startPoint , endPoint])
-          // 动画效果
-          const long = this.time + this.timeStop * 2 // 一个航段的动画时长
-          // 移动动画
-          air.animate('position', true)
-            .when(0, startPoint)
-            .when(long * index, startPoint)
-            .when(this.timeStop + long * index, startPoint)
-            .when(this.timeStop + this.time + long * index, endPoint)
-            .when(long * (arr.length - 1), endPoint)
-            .start()
-          // 透明度动画，不飞行的飞机隐藏
-          air.animate('style', true)
-            .when(0, {opacity: 0})
-            .when(long * index, {opacity: 0})
-            .when(this.timeStop + long * index, {opacity: 1})
-            .when(this.timeStop + this.time + long * index, {opacity: 1})
-            .when(this.timeStop * 2 + this.time + long * index, {opacity: 0})
-            .when(long * (arr.length - 1), {opacity: 0})
-            .start()
-          // 画svg图
-          this.zr.add(air)
-        }
-      })
+      this.drawLine()
     },
     beforeDestroy () {
       if (this.zr) {
@@ -205,6 +119,127 @@
         this.zr.dispose()
       }
     },
-    methods: {}
+    methods: {
+      drawLine() {
+        const dotR = this.dotR * this.dpr
+        const dotShadowBlur = this.dotShadowBlur * this.dpr
+        const iconSize = this.iconSize * this.dpr
+        const fontSize = 12 * this.dpr
+
+        const width = this.$el.clientWidth
+        const height = width * 2 / 3 // 长宽比  3:2
+        // 画航线
+        this.airPortLocations.forEach((a, index, arr) => {
+          // 将经纬度转为画布上的坐标
+          const p = utils.convert(a.location.map(n => Number(n)))
+          // 画机场的点 // 中转机场画中转图标
+          if (index === 0 || index === arr.length - 1) {
+            this['circle'+index] = new zrender.Circle({
+              shape: {
+                cx: p[0],
+                cy: p[1],
+                r: dotR
+              },
+              style: {
+                fill: this.dotFill,
+                text: a.city,
+                fontSize: fontSize,
+                textPosition: 'right',
+                shadowColor: this.dotFill,
+                shadowBlur: dotShadowBlur
+              },
+              z: this.dotZ
+            })
+            this.zr.add(this['circle'+index])
+          } else {
+            this['zzIcon'+index] = zrender.path.createFromString(this.zzSvg, {
+              style: {
+                fill: this.dotFill,
+                text: a.city,
+                fontSize: fontSize,
+                textPosition: 'right'
+              },
+              z: this.dotZ
+            })
+            // 缩放
+            const size = dotR * 2
+            this['zzIcon'+index].attr('scale', [size / 1024, size / 1024])
+            this['zzIcon'+index].attr('position', [p[0] - size / 2 , p[1] - size / 2])
+            this.zr.add(this['zzIcon'+index])
+          }
+          // 每2点间画线
+          if (index < arr.length - 1) {
+            const p2 = utils.convert(arr[index + 1].location.map(n => Number(n)))
+            this['zzLine'+index] = new zrender.Line({
+              shape: {
+                x1: p[0],
+                y1: p[1],
+                x2: p2[0],
+                y2: p2[1]
+              },
+              style: {
+                stroke:  this.lineStroke
+              },
+              z: this.lineZ
+            })
+            this.zr.add(this['zzLine'+index])
+            // 画飞机图标
+            // 通过svg图新建一个path
+            this['air'+index] = zrender.path.createFromString(this.airSvg, {style: {fill: this.iconFill}, z: this.iconZ})
+            // 缩放
+            this['air'+index].attr('scale', [iconSize / 1024, iconSize / 1024])
+            // 航线角度
+            const angle = utils.angle(p, p2, 90)
+            // 根据航线方向旋转图标，让飞机头始终向着航向方向
+            this['air'+index].attr('rotation', Math.PI/180 * (angle))
+            // 计算偏移
+            let out = zrender.matrix.create()
+            zrender.matrix.rotate(out, [iconSize / 2, iconSize / 2], Math.PI/180 * (angle))
+            // 计算图标的起点和终点
+            const startPoint = [p[0] - iconSize / 2 + (iconSize / 2 - out[0]), p[1] - iconSize / 2 + (iconSize / 2 - out[1])]
+            const endPoint = [p2[0] - iconSize / 2 + (iconSize / 2 - out[0]), p2[1] - iconSize / 2 + (iconSize / 2 - out[1])]
+            // air.attr('position', [startPoint , endPoint])
+            // 动画效果
+            const long = this.time + this.timeStop * 2 // 一个航段的动画时长
+            // 移动动画
+            this['air'+index].animate('position', true)
+              .when(0, startPoint)
+              .when(long * index, startPoint)
+              .when(this.timeStop + long * index, startPoint)
+              .when(this.timeStop + this.time + long * index, endPoint)
+              .when(long * (arr.length - 1), endPoint)
+              .start()
+            // 透明度动画，不飞行的飞机隐藏
+            this['air'+index].animate('style', true)
+              .when(0, {opacity: 0})
+              .when(long * index, {opacity: 0})
+              .when(this.timeStop + long * index, {opacity: 1})
+              .when(this.timeStop + this.time + long * index, {opacity: 1})
+              .when(this.timeStop * 2 + this.time + long * index, {opacity: 0})
+              .when(long * (arr.length - 1), {opacity: 0})
+              .start()
+            // 画svg图
+            this.zr.add(this['air'+index])
+          }
+        })
+      }
+    },
+    watch: {
+      codes(nval, oval) {
+        oval.forEach((item, index) => {
+          if (index === 0 || index === oval.length - 1) {
+            this.zr.remove(this['circle'+index])
+          } else {
+            this.zr.remove(this['zzIcon'+index])
+          }
+          if (index < oval.length - 1) {
+            this.zr.remove(this['zzLine'+index])
+            this.zr.clearAnimation()
+            this.zr.remove(this['air'+index])
+          }
+        })
+        this.drawLine()
+      }
+    }
   }
 </script>
