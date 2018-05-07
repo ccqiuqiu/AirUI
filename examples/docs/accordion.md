@@ -169,7 +169,8 @@
   export default {
     data () {
       return {
-        active: 0
+        active: 0,
+        actives: [0, 1]
       }
     }
   }

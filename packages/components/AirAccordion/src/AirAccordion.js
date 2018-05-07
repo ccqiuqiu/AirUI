@@ -19,10 +19,20 @@ export default {
   data() {
     return {
       children: [],
-      activeArr: []
+      activeArr: [],
+      mValue: this.value
     }
   },
   watch: {
+    value(val) {
+      this.mValue = val
+    },
+    mValue(val) {
+      this.init(val)
+      // this.children.forEach(c => c.toggle(0))
+      // this.children[val] && this.children[val].toggle()
+      // this.$emit('input', val)
+    },
     activeArr() {
       const indexArr = []
       this.activeArr.forEach((v, i) => { v && indexArr.push(i) })
@@ -37,23 +47,45 @@ export default {
     this.children = this.$children.filter(c => {
       return c.$options && c.$options.name === 'AirAccordionContent'
     })
-    this.activeArr = new Array(this.children.length).fill(false)
-    if (this.value) {
-      if (typeof this.value === 'number') {
-        this.activeArr[this.value] = true
-      } else {
-        this.value.forEach(i => this.activeArr[i] = true)
-      }
-    }
-    if (this.value !== undefined) {
-      if (typeof this.value === 'number') {
-        this.children[this.value].toggle()
-      } else {
-        this.value.forEach(i => this.children[i].toggle())
-      }
-    }
+    this.init(this.value)
   },
   methods: {
+    init(val) {
+      if (!this.expand) {
+        this.children.forEach(c => c.toggle(0))
+        this.children[val] && this.children[val].toggle()
+      } else {
+        this.children.forEach((c, i) => {
+          if (val.includes(i)) {
+            if (!c.isActive) {
+              c.toggle()
+            }
+          } else {
+            c.toggle(0)
+          }
+        })
+        val.forEach(v => {
+          if (!this.children[v].isActive) {
+            this.children[v].toggle()
+          }
+        })
+      }
+      this.$emit('input', val)
+      // this.activeArr = new Array(this.children.length).fill(false)
+      // if (this.value !== undefined) {
+      //   if (typeof this.value === 'number') {
+      //     if (this.value >= 0) {
+      //       this.activeArr[this.value] = true
+      //       this.children[this.value].toggle()
+      //     }
+      //   } else {
+      //     this.value.forEach(i => {
+      //       this.activeArr[i] = true
+      //       this.children[i].toggle()
+      //     })
+      //   }
+      // }
+    },
     getChildren () {
       return this.$children.filter(c => {
         return c.$options && c.$options.name === 'AirAccordionContent'
@@ -80,9 +112,16 @@ export default {
     changeActive(uid, isActive) {
       const index = this.children.findIndex(c => c._uid === uid)
       if (!this.expand) {
-        this.activeArr = new Array(this.children.length).fill(false)
+        this.mValue = isActive ? index : -1
+        // this.activeArr = new Array(this.children.length).fill(false)
+      } else {
+        const index2 = this.mValue.indexOf(index)
+        if (index2 >= 0) {
+          this.mValue.splice(index2, 1)
+        } else {
+          this.mValue.push(index)
+        }
       }
-      this.activeArr.splice(index, 1, isActive)
     }
   },
   render (h) {

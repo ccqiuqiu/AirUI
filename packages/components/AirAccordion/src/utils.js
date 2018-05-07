@@ -58,7 +58,7 @@ function ExpandTransitionGenerator(expandedParentClass = '') {
 
     afterEnter (el) {
       el.style.overflow = null
-      el.style.height = null
+      //el.style.height = null
     },
 
     leave (el, done) {

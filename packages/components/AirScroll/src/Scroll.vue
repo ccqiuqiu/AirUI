@@ -228,6 +228,7 @@
         if (this.pullDownRefresh && this.isPullingDown) {
           this.isPullingDown = false
           this.loadError = !dirty
+          this.pullUpDirty = dirty
           this._reboundPullDown().then(() => {
             this._afterPullDown()
           })
