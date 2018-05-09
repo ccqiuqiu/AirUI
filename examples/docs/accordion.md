@@ -6,7 +6,7 @@
 ### 基础用法
 <div class="demo-block">
   <air-accordion>
-    <air-accordion-content v-for="(item,i) in 5" :key="i">
+    <air-accordion-content v-for="(item,i) in list" :key="i">
       <span slot="icon">v</span>
       <div slot="header" style="padding:16px;">Item</div>
       <div style="padding:16px;background-color:#eee;">
@@ -14,6 +14,7 @@
       </div>
     </air-accordion-content>
   </air-accordion>
+  <button @click="add">增加一项</button>
 </div>
 
 ::: demo
@@ -169,8 +170,14 @@
   export default {
     data () {
       return {
+        list: 3,
         active: 0,
         actives: [0, 1]
+      }
+    },
+    methods: {
+      add() {
+        this.list++
       }
     }
   }

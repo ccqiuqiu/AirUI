@@ -93,7 +93,7 @@ export default {
     },
     panelClick (uid, isActive) {
       this.changeActive(uid, isActive)
-      const children = this.children
+      const children = this.getChildren()
 
       if (!this.expand) {
         for (let index = children.length; --index >= 0;) {
