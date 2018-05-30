@@ -68,6 +68,8 @@
         required: true
       },
       hots: Array,
+      hotList: Array,
+      hotSortField: String,
       histories: Array,
       textField: {
         type: String,
@@ -140,12 +142,16 @@
         }
       },
       hotData () {
-        if (this.hots && this.hots.length > 0) {
-          // return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
-          return this.hots.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
-            .filter(item => item)
+        let hotData = []
+        if (this.hotList && this.hotList.length > 0) {
+          hotData = this.hotList
+        } else if(this.hots && this.hots.length > 0) {
+          hotData = this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
         }
-        return []
+        if (this.hotSortField) {
+          hotData.sort((a, b) => b[this.hotSortField] - a[this.hotSortField])
+        }
+        return hotData.filter(item => item)
       },
       hisData () {
         if (this.histories && this.histories.length > 0) {
