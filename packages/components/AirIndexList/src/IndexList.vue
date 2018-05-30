@@ -143,6 +143,7 @@
         if (this.hots && this.hots.length > 0) {
           // return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
           return this.hots.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
+            .filter(item => item)
         }
         return []
       },
@@ -150,6 +151,7 @@
         if (this.histories && this.histories.length > 0) {
           // return this.tabFilterData.filter(item => this.histories.includes(item[this.keyField]))
           return this.histories.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
+            .filter(item => item)
         }
         return []
       },
@@ -259,11 +261,9 @@
           this.active = dts[dts.length - 1].char
         }
         // 下一个标题距离顶部的位置
-        const h = Math.floor(this.titleDom.clientHeight)
+        const h = Math.ceil(this.titleDom.clientHeight)
         const offset = this.titleOffsetTops[(dts.length)] ? this.titleOffsetTops[(dts.length)].y - y : h
-        // 这个值只能在0-26之间才触发位移  26为title的高
-        // -1像素是为了解决在以rem为单位的项目可能因为精度问题导致新旧标题间的间隙
-        this.offset = Math.min(Math.max(0, offset), h) - h - 1
+        this.offset = Math.min(Math.max(0, offset), h) - h
       },
       clickItem (item) {
         this.$emit('on-selected', item)

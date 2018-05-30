@@ -13,7 +13,7 @@
     "url": "https://github.com/ccqiuqiu/AirUI"
   },
   "dependencies": {
-    "better-scroll": "^1.8.0",
+    "better-scroll": "^1.10.3",
     "zrender": "^3.7.4",
     "date-fns": "^2.0.0-alpha.7",
     "vue-touch": "^2.0.0-beta.4"
