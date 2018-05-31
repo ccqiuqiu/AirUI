@@ -50,8 +50,6 @@
         required: true
       },
       hots: Array,
-      hotList: Array,
-      hotSortField: String,
       textField: {
         type: String,
         required: true
@@ -105,16 +103,7 @@
         }
       },
       hotData () {
-        let hotData = []
-        if (this.hotList && this.hotList.length > 0) {
-          hotData = this.hotList
-        } else if(this.hots && this.hots.length > 0) {
-          hotData = this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
-        }
-        if (this.hotSortField) {
-          hotData.sort((a, b) => b[this.hotSortField] - a[this.hotSortField])
-        }
-        return hotData
+        return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
       },
       searchData () {
         if (this.keyword) {
