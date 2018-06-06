@@ -140,7 +140,9 @@
         }
       },
       hotData () {
-        return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
+        return this.hots.map(item => this.tabFilterData.find(item2 => item2[this.keyField] === item))
+            .filter(item => item)
+        // return this.tabFilterData.filter(item => this.hots.includes(item[this.keyField]))
       },
       hisData () {
         if (this.histories && this.histories.length > 0) {
@@ -274,6 +276,11 @@
       offset(val, oldVal) {
         if (val !== oldVal) {
           this.titleDom.style.transform = `translate3d(0, ${val}px, 0)`
+        }
+      },
+      data(val, oldVal) {
+        if (val !== oldVal) {
+          this.sortedData()
         }
       }
     }
