@@ -63,6 +63,10 @@
         type: Boolean,
         default: true
       },
+      tap: {
+        type: Boolean,
+        default: true
+      },
       probeType: {
         type: Number,
         default: 1
