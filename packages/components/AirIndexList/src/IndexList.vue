@@ -30,7 +30,7 @@
             <slot name="hot">热门</slot>
           </dt>
           <dd>
-            <span v-for="item in hotData" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
+            <span v-for="item in hotData" :class="getHightLineClass(item[keyField])" :key="item[keyField]" @click="clickItem(item)">{{item[textField]}}</span>
           </dd>
         </dl>
         <dl v-for="(value, key) in listData" :key="key" :class="['air-index-select__dl', 'air-index-select__key-'+key]">
@@ -68,6 +68,11 @@
         required: true
       },
       hots: Array,
+      hotHighlight: Array,
+      hotHighlightClass: {
+        type: String,
+        default: 'air-index-select__key-hot-hl'
+      },
       histories: Array,
       textField: {
         type: String,
@@ -246,6 +251,9 @@
         } else {
           return char
         }
+      },
+      getHightLineClass(key) {
+        return this.hotHighlight.find(item => item === key) ? this.hotHighlightClass : ''
       },
       clickChar (char) {
         this.tip = char
