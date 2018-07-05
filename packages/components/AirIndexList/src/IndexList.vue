@@ -253,6 +253,7 @@
         }
       },
       getHightLineClass(key) {
+        if (this.hotHighlight)
         return this.hotHighlight.find(item => item === key) ? this.hotHighlightClass : ''
       },
       clickChar (char) {
