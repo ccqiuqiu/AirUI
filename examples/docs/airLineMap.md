@@ -6,12 +6,12 @@
 ### 基础用法
 
 <div class="demo-block">
-  <air-line-map :codes="['CAN','PEK','CSX']" />
+  <air-line-map :codes="[['CAN','PEK','CSX']]" />
 </div>
 
 ::: demo
 ```html
-  <air-line-map :codes="['CAN','PEK','CSX']" />
+  <air-line-map :codes="[['CAN','PEK','CSX']]" />
 ```
 :::
 
