@@ -43,7 +43,7 @@
           </dd>
         </dl>
       </scroll>
-      <div class="air-index-select__title" v-show="/[A-Z]/.test(active) && fixTitle">{{active}}</div>
+      <div class="air-index-select__title" :style="titleStyle" v-show="/[A-Z]/.test(active) && fixTitle">{{active}}</div>
     </div>
     <div :class="['air-index-select__index', {'air-index-select__index--tabs': !!tabs}, indexClass]" v-show="!keyword"
          @touchstart.stop.prevent="touchstart"
@@ -190,6 +190,11 @@
           })
         })
         return temp
+      },
+      titleStyle() {
+        return {
+          transform: `translate3d(0, ${this.offset}px, 0)`
+        }
       }
     },
     mounted () {
@@ -284,7 +289,7 @@
       },
       offset(val, oldVal) {
         if (val !== oldVal) {
-          this.titleDom.style.transform = `translate3d(0, ${val}px, 0)`
+          // this.titleDom.style.transform = `translate3d(0, ${val}px, 0)`
         }
       },
       data(val, oldVal) {

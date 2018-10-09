@@ -200,7 +200,7 @@
       tip (char) {
         const titleDom = this.$el.querySelector('.air-index-select__key-' + (char === '热' ? 'hot' : char))
         if (titleDom) {
-          this.contentDom.scrollTop = titleDom.offsetTop
+          this.contentDom.scrollTop = titleDom.offsetTop - this.contentDom.offsetTop
         }
       },
       offset(val, oldVal) {

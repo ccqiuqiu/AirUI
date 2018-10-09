@@ -134,7 +134,7 @@
       // this.pullDownInitTop = -50
     },
     mounted() {
-      this.pullDownInitTop = - this.$refs.pulldown.$el.clientHeight
+      this.pullDownInitTop = this.$refs.pulldown ? - this.$refs.pulldown.$el.clientHeight : 0
       setTimeout(() => {
         this.initScroll()
         this.toKeepLocation()
