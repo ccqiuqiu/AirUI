@@ -22,7 +22,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
-    "better-scroll": "^1.10.3",
+    "better-scroll": "^1.13.2",
     "cheerio": "^1.0.0-rc.2",
     "date-fns": "^2.0.0-alpha.7",
     "fs": "^0.0.1-security",

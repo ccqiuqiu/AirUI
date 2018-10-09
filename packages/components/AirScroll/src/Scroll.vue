@@ -9,7 +9,7 @@
             <span>{{pullUpTxt}}</span>
           </div>
           <div class="after-trigger" v-else>
-            <loading></loading>
+            <slot name="loading"><loading></loading></slot>
           </div>
         </div>
       </slot>
@@ -21,17 +21,10 @@
           :beforePullDown="beforePullDown"
           :isPullingDown="isPullingDown"
           :bubbleY="bubbleY">
-      <div ref="pulldown" class="pulldown-wrapper" :style="pullDownStyle" v-if="pullDownRefresh">
-        <div class="before-trigger" v-if="beforePullDown">
-          <bubble :y="bubbleY"></bubble>
-        </div>
-        <div class="after-trigger" v-else>
-          <div v-if="isPullingDown">
-            <loading></loading>
-          </div>
-          <div v-else><span>{{refreshTxt}}</span></div>
-        </div>
-      </div>
+      <pull-down :bubbleY="bubbleY" :refreshTxt="refreshTxt" ref="pulldown" class="pulldown-wrapper" :top="pullDownStyle" :md="md" v-if="pullDownRefresh"
+                 :beforePullDown="beforePullDown" :isPullingDown="isPullingDown">
+        <slot name="icon" slot="icon"></slot>
+      </pull-down>
     </slot>
 
   </div>
@@ -40,9 +33,9 @@
 <script>
   import config from '../../../utils/config'
   import BScroll from 'better-scroll'
-  import Loading from '../../common/loading'
-  import Bubble from './bubble.vue'
+  import PullDown from './PullDown.vue'
   import { getRect } from '../../../utils/domUtils'
+  import Loading from '../../common/loading'
 
   const DIRECTION_H = 'horizontal'
   const DIRECTION_V = 'vertical'
@@ -50,6 +43,7 @@
   export default {
     name: 'AirScroll',
     props: {
+      md: Boolean,
       data: {},
       noRoot: {
         type: Boolean,
@@ -137,9 +131,10 @@
       }
     },
     created() {
-      this.pullDownInitTop = -50
+      // this.pullDownInitTop = -50
     },
     mounted() {
+      this.pullDownInitTop = - this.$refs.pulldown.$el.clientHeight
       setTimeout(() => {
         this.initScroll()
         this.toKeepLocation()
@@ -177,7 +172,7 @@
           scrollY: this.freeScroll || this.direction === DIRECTION_V,
           scrollX: this.freeScroll || this.direction === DIRECTION_H,
           scrollbar: this.scrollbar,
-          pullDownRefresh: this.pullDownRefresh === true ? {stop: 50} : this.pullDownRefresh,
+          pullDownRefresh: this.pullDownRefresh === true ? {threshold: -this.pullDownInitTop, stop: -this.pullDownInitTop} : this.pullDownRefresh,
           pullUpLoad: this.pullUpLoad,
           startY: this.startY,
           freeScroll: this.freeScroll,
@@ -255,13 +250,13 @@
         this.scroll.on('scroll', (pos) => {
           if (this.beforePullDown) {
             this.bubbleY = Math.max(0, pos.y + this.pullDownInitTop)
-            this.pullDownStyle = `top:${Math.min(pos.y + this.pullDownInitTop, 10)}px`
+            this.pullDownStyle = Math.min(pos.y + this.pullDownInitTop, 0)
           } else {
             this.bubbleY = 0
           }
 
           if (this.isRebounding) {
-            this.pullDownStyle = `top:${10 - (this.pullDownRefresh.stop - pos.y)}px`
+            this.pullDownStyle = 0 - (this.pullDownRefresh.stop - pos.y)
           }
           this.$route.meta.y = pos.y
         })
@@ -284,11 +279,11 @@
       },
       _afterPullDown() {
         setTimeout(() => {
-          this.pullDownStyle = `top:${this.pullDownInitTop}px`
+          this.pullDownStyle = this.pullDownInitTop
           this.beforePullDown = true
           this.isRebounding = false
           this.refresh()
-        }, this.scroll.options.bounceTime)
+        }, this.md ? 0 : this.scroll.options.bounceTime)
       }
     },
     watch: {
@@ -296,7 +291,7 @@
         this.$nextTick(() => this.forceUpdate(true))
       }
     },
-    components: {Loading, Bubble}
+    components: {Loading, PullDown}
   }
 
 </script>

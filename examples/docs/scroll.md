@@ -6,17 +6,21 @@
 ### 基础用法
 > 使用air-scroll组件包裹需要滚动的容器即可
 
-<div class="demo-block demo-block-m" style="height: 100px">
-  <air-scroll>
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-    <div>7</div>
+<div class="demo-block demo-block-m" style="height: 300px">
+  <air-scroll pullDownRefresh pullUpLoad ref="scroll" @pullingDown="load" @pullingUp="load" md>
+    <div v-for="i in 20">{{i}}</div>
   </air-scroll>
 </div>
+
+<script>
+export default {
+  methods: {
+    load() {
+      setTimeout(() => this.$refs.scroll.forceUpdate(true), 3000)
+    }
+  }
+}
+</script>
 
 ### 属性
 |属性名|类型|描述|必须|默认|
@@ -35,11 +39,12 @@
 |mouseWheel|Boolean/Object|当设置为 true 或者是一个 Object 的时候，可以开启鼠标滚轮，例如：{speed: 20, // 滚动速度  invert: false //滚轮滚动和实际滚动方向相反}|-|false|
 |pullDownRefresh|Boolean/Object|当设置为 true 或者是一个 Object 的时候，可以开启下拉刷新，例如：{stop: 40, // 回弹停留的距离 text: '刷新成功', //刷新成功文本 errorText: '刷新失败' // 刷新失败文本}|-|false|
 |pullUpLoad|Boolean/Object|当设置为 true 或者是一个 Object 的时候，可以开启加载更多，例如：{moreText: '加载等多', //加载等多文本 noMoreText: '没有等多数据了' // 没有更多数据的文本}|-|false|
+|md|Boolean|启用Material Design风格的下拉刷新|-|false|
 
 ### 事件
 |事件名|描述|返回值类型|说明|
 |----|----|-------------|---|
 |scroll|滚动事件|Object|返回滚动的位置对象，包含x，y|
 |beforeScrollStart|滚动开始事件|-|滚动开始是触发|
-|pullingDown|下拉刷新事件|-|下拉刷新触发|
-|pullingUp|加载更多事件|-|加载更多触发|
+|pullingDown|下拉刷新事件|-|下拉刷新触发, this.$refs.scroll.forceUpdate(true) 关闭加载|
+|pullingUp|加载更多事件|-|加载更多触发 this.$refs.scroll.forceUpdate(true) 关闭加载 |
